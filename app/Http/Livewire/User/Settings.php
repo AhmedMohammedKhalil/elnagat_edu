@@ -11,16 +11,14 @@ use Livewire\Component;
 class Settings extends Component
 {
     use WithFileUploads;
-    public $name='', $email='', $photo, $phone='', $address='',$user_id='';
+    public $name='', $email='', $gender="",$user_id='';
 
 
     public function mount() {
-        $this->user_id = Auth::guard('user')->user()->id;
-        $this->name = Auth::guard('user')->user()->name;
-        $this->email = Auth::guard('user')->user()->email;
-        $this->phone = Auth::guard('user')->user()->phone;
-        $this->address = Auth::guard('user')->user()->address;
-
+        $this->user_id = auth()->user()->id;
+        $this->name = auth()->user()->name;
+        $this->email = auth()->user()->email;
+        $this->gender = auth()->user()->gender;
     }
 
     protected $messages = [
@@ -40,16 +38,8 @@ class Settings extends Component
 
     protected $rules = [
         'name' => ['required', 'string', 'max:50'],
-        'phone' => ['required', 'string','regex:/^([0-9\s\-\+\(\)]*)$/','min:8','max:8'],
-        'address' => ['required', 'string', 'max:255']
+        'gender' => ['required'],
     ];
-
-    public function updatedPhoto()
-    {
-            $validatedata = $this->validate(
-                ['photo' => ['image','mimes:jpeg,jpg,png','max:2048']]
-            );
-    }
 
     public function edit() {
         $validatedata = $this->validate(
@@ -57,21 +47,16 @@ class Settings extends Component
                 $this->rules,
                 [ 'email'   => ['required','email',"unique:users,email,".$this->user_id],
         ]));
-        if(!$this->photo)
-            User::whereId($this->user_id)->update($validatedata);
-        if($this->photo) {
-            $photoname = $this->photo->getClientOriginalName();
-            User::whereId($this->user_id)->update(array_merge($validatedata,['photo' => $photoname]));
-            $dir = public_path('img/users/'.$this->user_id);
-            if(file_exists($dir))
-                File::deleteDirectories($dir);
-            else
-                mkdir($dir);
-            $this->photo->storeAs($dir,$photoname);
-            File::deleteDirectory(public_path('uploads/livewire-tmp'));
-        }
+        User::whereId($this->user_id)->update($validatedata);
         session()->flash('message', "Your Profile Updated.");
-        return redirect()->route('user.profile');
+        return redirect()->route('profile');
+        // if(auth()->user()->role == "admin"){
+        //     return redirect()->route('admin.profile');
+        // } elseif(auth()->user()->role == "official"){
+        //     return redirect()->route('official.profile');
+        // }else {
+        //     return redirect()->route('sub_admin.profile');
+        // }
     }
 
     public function render()

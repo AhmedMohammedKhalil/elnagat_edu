@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserContoller extends Controller
 {
-     public function showLoginForm() {
-        return view('users.login');
+
+    public function dashboard() {
+        $page_name = 'الإحصائيات';
+        $user_count = User::all()->count();
+        return view('users.dashboard',compact('page_name','user_count'));
     }
-
-
-    public function showRegisterForm() {
-        return view('users.register');
-    }
-
 
     public function profile() {
         return view('users.profile',['page_name' => 'البروفايل']);
@@ -30,7 +28,7 @@ class UserContoller extends Controller
     }
 
     public function logout(Request $request) {
-        Auth::guard('user')->logout();
+        auth()->logout();
         $request->session()->invalidate();
         return redirect()->route('home');
     }

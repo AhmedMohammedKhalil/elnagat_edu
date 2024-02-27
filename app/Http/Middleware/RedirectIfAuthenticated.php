@@ -19,16 +19,24 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, $guard = null)
     {
-        if ($guard == "admin" && Auth::guard($guard)->check()) {
-            return redirect('admin/profile');
+        if (auth()->check()){
+            return redirect('profile');
         }
+        // if (auth()->check() && auth()->user()->role === 'admin') {
+        //     return redirect('admin/profile');
+        // }
 
-        if ($guard == "user" && Auth::guard($guard)->check()) {
-            return redirect('user/profile');
-        }
-        if (Auth::guard($guard)->check()) {
-            return redirect()->route('home');
-        }
+        // if (auth()->check() && auth()->user()->role === 'official') {
+        //     return redirect('official/profile');
+        // }
+
+        // if (auth()->check() && auth()->user()->role === 'sub_admin') {
+        //     return redirect('sub_admin/profile');
+        // }
+
+        // if (Auth::guard($guard)->check()) {
+        //     return redirect()->route('home');
+        // }
         return $next($request);
     }
 }

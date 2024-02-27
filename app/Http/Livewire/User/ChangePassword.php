@@ -13,7 +13,7 @@ class ChangePassword extends Component
 
 
     public function mount() {
-        $this->user_id = Auth::guard('user')->user()->id;
+        $this->user_id = auth()->user()->id;
     }
 
 
@@ -36,7 +36,7 @@ class ChangePassword extends Component
 
         User::whereId($this->user_id)->update($data);
         session()->flash('message', "Your Profile Updated.");
-        return redirect()->route('user.profile');
+        return redirect()->route('profile');
     }
 
     public function render()

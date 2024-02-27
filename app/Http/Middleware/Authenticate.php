@@ -16,17 +16,26 @@ class Authenticate extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        if ($request->is('admin') || $request->is('admin/*')) {
-            if (Auth::guard('admin')->check())
-                return $next($request);
-            return redirect('/');
+        if (!auth()->check()) {
+            return redirect("/");
         }
+        // if ($request->is('admin') || $request->is('admin/*')) {
+        //     if (auth()->check() && auth()->user()->role === 'admin')
+        //         return $next($request);
+        //     return redirect('/');
+        // }
 
-        if ($request->is('user') || $request->is('user/*')) {
-            if (Auth::guard('user')->check())
-                return $next($request);
-            return redirect('/');
-        }
+        // if ($request->is('official') || $request->is('official/*')) {
+        //     if (auth()->check() && auth()->user()->role === 'official')
+        //         return $next($request);
+        //     return redirect('/');
+        // }
+
+        // if ($request->is('sub_admin') || $request->is('sub_admin/*')) {
+        //     if (auth()->check() && auth()->user()->role === 'sub_admin')
+        //         return $next($request);
+        //     return redirect('/');
+        // }
         return $next($request);
     }
 }

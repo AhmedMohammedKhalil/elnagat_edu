@@ -15,8 +15,8 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('owner');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
+            $table->integer('sub_admin_id')->unsigned();
+            $table->foreign('sub_admin_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('schools');
     }
 };
