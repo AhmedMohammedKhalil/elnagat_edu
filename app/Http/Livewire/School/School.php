@@ -13,6 +13,19 @@ class School extends Component
 
     public function mount($method,?int $school_id) {
         $this->method = $method;
+        $sub_admins = User::where('role', 'sub_admin')->get();
+        $ids = [];
+        foreach ($sub_admins as $admin){
+            if(!ModelsSchool::where('sub_admin_id', $admin->id)->first()) {
+                $ids[] = $admin->id;
+            }
+        }
+        if($this->method == 'edit'){
+            $ids[] = $this->sub_admin_id;
+        }
+        $this->sub_admins = User::whereIn('id', $ids)->get();
+        $sub_admin = User::whereIn('id', $ids)->first();
+        $this->sub_admin_id = $sub_admin->id;
         //$this->school_id = (isset($school_id) && $school_id != null) ? $school_id : $this->school_id;
         if($this->method == 'edit') {
             $this->school = ModelsSchool::whereId($school_id)->first();

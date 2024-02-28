@@ -14,6 +14,8 @@ class Teacher extends Component
     public function mount($method,$school_id,?int $teacher_id) {
         $this->method = $method;
         $this->departments = Department::where("school_id",$school_id)->get();
+        $department = Department::where("school_id",$school_id)->first();
+        $this->department_id = $department->id;
         //$this->school_id = (isset($school_id) && $school_id != null) ? $school_id : $this->school_id;
         if($this->method == 'edit') {
             $this->teacher = ModelsTeacher::whereId($teacher_id)->first();

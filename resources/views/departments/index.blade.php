@@ -47,9 +47,9 @@
                                                         <td>{{ $department->owner }}</td>
                                                         <td>{{ $department->school->name }}</td>
                                                         <td>
-                                                            <a href="{{ route('depratments.edit',['id' => $department->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
+                                                            <a href="{{ route('departments.edit',['id' => $department->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
                                                             @if(count($department->teachers) == 0)
-                                                                <form style="display:inline-block" action="{{route('depratments.destroy',['id'=>$department->id])}}" method="post">
+                                                                <form style="display:inline-block" action="{{route('departments.destroy',['id'=>$department->id])}}" method="post">
                                                                     @csrf
                                                                     @method('delete')
                                                                     <button class="btn btn-xs sharp btn-danger" type="submit" title="حذف" >
