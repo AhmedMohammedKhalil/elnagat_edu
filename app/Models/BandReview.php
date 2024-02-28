@@ -14,5 +14,11 @@ class BandReview extends Model
         'band_id',
         'review_id',
     ];
-    
+    public function band() {
+        return $this->belongsTo(Band::class);
+    }
+
+    public function review() {
+        return $this->belongsTo(Review::class);
+    }
 }
