@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">النوع</label>
+                    <label class="gender">النوع</label>
                     <select class="form-control" wire:model.lazy='gender' id="gender">
                         <option value="ذكر" @if($gender == 'ذكر') selected @endif>ذكر</option>
                         <option value="أنثى" @if($gender == 'أنثى') selected @endif>أنثى</option>

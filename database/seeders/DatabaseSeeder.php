@@ -16,25 +16,25 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::create([
             'name' => 'الأدمن',
-            'email' => 'admin@elnagat_edu.com',
+            'email' => 'admin@elnajat.edu.com',
             'role' => 'admin',
-            'gender' => 'male',
+            'gender' => 'ذكر',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" //password
         ]);
 
         \App\Models\User::create([
             'name' => 'طلال',
-            'email' => 'talal@elnagat_edu.com',
+            'email' => 'talal@elnajat.edu.com',
             'role' => 'official',
-            'gender' => 'male',
+            'gender' => 'ذكر',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" //password
         ]);
 
         \App\Models\User::create([
-            'name' => 'sara',
-            'email' => 'sara@elnagat_edu.com',
+            'name' => 'سارة عثمان',
+            'email' => 'sara@elnajat.edu.com',
             'role' => 'official',
-            'gender' => 'female',
+            'gender' => 'أنثى',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" //password
         ]);
     }

@@ -38,6 +38,6 @@ class User extends Authenticatable
 
 
     public function schools() {
-        return $this->hasMany(School::class);
+        return $this->hasMany(School::class,'sub_admin_id');
     }
 }

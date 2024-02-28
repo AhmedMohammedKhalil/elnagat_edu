@@ -14,11 +14,11 @@
         <div class="row">
             <div class="col-lg-6 col-sm-12 m-auto">
                 <div class="card">
-                    <div class="text-center p-3 overlay-box" style="background-image: url({{ asset('assets/images/data/cover3.jpg') }});">
+                    <div class="text-center p-3">
                         <div class="profile-photo">
-                            <img src="{{ asset('assets/images/avatar/1.png') }}" width="100" class="img-fluid rounded-circle" alt="">
+                            <img src="{{ asset('assets/images/data/icons/profile.png') }}" width="100" class="img-fluid rounded-circle" alt="">
                         </div>
-                        <h3 class="mt-3 mb-1 text-white">{{ auth()->user()->name }}</h3>
+                        <h3 class="mt-3 mb-1" style="color:#044c71">{{ auth()->user()->name }}</h3>
                     </div>
                 </div>
             </div>

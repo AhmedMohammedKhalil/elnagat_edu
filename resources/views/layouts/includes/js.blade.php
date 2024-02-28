@@ -1,5 +1,5 @@
 <script>
-    var base_url = "{{ env('APP_URL') }}";
+    var base_url = "{{ env('APP_URL') }}/";
 </script>
 <script src="{{ asset('assets/vendor/global/global.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>

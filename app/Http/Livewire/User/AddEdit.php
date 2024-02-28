@@ -13,6 +13,7 @@ class AddEdit extends Component
 
     public function mount($method,?int $user_id) {
         $this->method = $method;
+        $this->gender = 'ذكر';
         if($this->method == 'editOfficial' || $this->method == 'editSubAdmin') {
             $this->user = User::whereId($user_id)->first();
             $this->email = $this->user->email;

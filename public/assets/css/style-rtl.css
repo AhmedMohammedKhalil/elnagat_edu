@@ -4,7 +4,7 @@
     Name                 : Edumin
     Author               : Dexignlabs
     Author Portfolio     : https://themeforest.net/user/dexignlabs/portfolio
-    
+
     Table of Sass Contents
 
     1. Abstracts
@@ -14,7 +14,7 @@
         _mixin
         _variable
 
-    2. bootstrap 
+    2. bootstrap
         -Here goes all official bootstrap scss files
 
     3. Global/Base
@@ -51,6 +51,7 @@
         _page-user-lock
 
 */
+
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
@@ -65,6 +66,17 @@
 @import url("./../icons/flaticon/flaticon.css");
 @import url(./../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
 @import url(./../vendor/metismenu/css/metisMenu.min.css);
+@font-face {
+    font-family: shamelBold;
+    src: url(shamel/FFShamelFamily-SansOneBold.ttf);
+  }
+
+  @font-face {
+    font-family: shamelbook;
+    src: url(shamel/FFShamelFamily-SansOneBook.ttf);
+  }
+
+
 :root {
   --primary: #6a73fa;
   --secondary: #673BB7;

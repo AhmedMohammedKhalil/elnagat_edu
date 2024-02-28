@@ -20,7 +20,7 @@
 
 
                 <div class="form-group">
-                    <label class="form-label">المدير المساعد</label>
+                    <label class="sub_admin_id">المدير المساعد</label>
                     <select class="form-control" wire:model.lazy='sub_admin_id' id="sub_admin_id">
                         @foreach ($sub_admins as $admin)
                             <option value="{{ $admin->id }}" @if($sub_admin_id == $admin->id) selected @endif>{{ $admin->name }}</option>

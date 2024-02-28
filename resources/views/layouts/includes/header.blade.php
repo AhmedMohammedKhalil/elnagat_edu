@@ -1,6 +1,6 @@
 <div class="nav-header" style="height: 100px">
-    <a href="index" class="brand-logo" style="background:white">
-        <img src="{{ asset('assets/images/data/logo1.svg') }}" alt="logo" style="height: 80px;width:150px;background:white">
+    <a href="index" class="brand-logo" style="background-color:#044c71">
+        <img src="{{ asset('assets/images/data/logo1-white.png') }}" alt="logo" style="height: 93px;width:120px">
     </a>
 
     <div class="nav-control">
@@ -19,7 +19,7 @@
                 <ul class="navbar-nav header-right">
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                            <img src="{{ asset('assets/images/avatar/1.png') }}" style="height: 50px;width:50px" alt="" />
+                            <img src="{{ asset('assets/images/data/icons/profile.png') }}" style="height: 50px;width:50px" alt="" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{ route('profile') }}" class="dropdown-item ai-icon">
@@ -57,7 +57,7 @@
                     </li>
                     <li class="nav-item header-profile">
                         <a class="nav-link" href="javascript:void(0);">
-                            <img src="{{ asset('assets/images/data/logo2.svg') }}" alt="logo" style="height: 80px;width:80px;border-radius:0;background:white">
+                            <img src="{{ asset('assets/images/data/logo2-white.png') }}" alt="logo" style="height: 80px;width:80px;border-radius:0;background:#044c71">
                         </a>
                     </li>
                 </ul>

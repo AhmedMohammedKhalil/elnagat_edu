@@ -21,18 +21,16 @@
     @stack('css')
     <style>
 
+
         :root {
-            --primary: #004d71 !important;
-            --primary-hover: #0586c3 !important;
+            --primary: #8bdb65 !important;
+            --primary-hover: #8bdb65 !important;
         }
         *{
             font-size: 16px;
+            /* font-family: 'shamelBook' !important; */
         }
-        body {
-            background-image: url("{{ asset('assets/images/data/background.jpg') }}");
-            background-position: center;
-            background-size: cover
-        }
+
         li a{
             font-size: 14px !important;
 
@@ -48,7 +46,7 @@
         }
 
         .page-titles {
-            background-image: url("{{ asset('assets/images/data/cover1.jpg') }}");
+            background-image: url("{{ asset('assets/images/data/4.png') }}");
             background-size:cover;
             height: 300px;
         }
@@ -58,8 +56,9 @@
             align-items: center;
         }
 
-        .footer {
-            background: #226127
+        .footer p{
+            font-size: 18px !important;
+            font-weight: bold
         }
         .copyright p{
             font-size: 18px;
@@ -74,24 +73,21 @@
             padding: 5px;
         }
 
-        table.dataTable thead .sorting {
-            text-align: center
-        }
 
         [data-headerbg="color_2"][data-theme-version="dark"], [data-headerbg="color_2"] {
-            --headerbg: #226127;
+            --headerbg: #044c71;
         }
 
         [data-sidebarbg="color_2"][data-theme-version="dark"], [data-sidebarbg="color_2"] {
-            --sidebar-bg: #226127;
+            --sidebar-bg: #044c71;
         }
 
         [data-sidebarbg="color_2"][data-theme-version="dark"] .menu-toggle .dlabnav .metismenu li > ul, [data-sidebarbg="color_2"] .menu-toggle .dlabnav .metismenu li > ul {
-            background: #226127 !important
+            background: #044c71 !important
         }
 
         .dropdown-menu {
-            background: #226127 !important;
+            background: #044c71 !important;
             color: white
         }
 
@@ -113,19 +109,15 @@
             background: #709bb0 !important;
         }
 
-        .content-body .nav-item:hover {
-            background-color: var(--primary);
-            color:white;
-            border-radius: 5px
-        }
 
-        .content-body .nav-item:hover a{
-            color:white;
-        }
 
         .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
             border-color: var(--primary-hover);
             background-color: #004d71c7 !important;
+        }
+
+        .page-titles h4, .page-titles .h4 {
+            color: #044c71 !important;
         }
 
     </style>

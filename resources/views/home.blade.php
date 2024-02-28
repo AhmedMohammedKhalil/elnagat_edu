@@ -23,21 +23,55 @@
 
     <style>
         :root {
-            --primary: #004d71 !important;
-            --primary-hover: #0586c3 !important;
+            --primary: #044c71 !important;
+            --primary-hover: #044d71b4 !important;
         }
 
         *{
+            font-family: 'shamelBook' !important;
+            color: #044c71 !important;
+            font-size: 18px !important;
+            font-weight: 500 !important;
+        }
+
+        .form-control{
             font-size: 18px !important
         }
-        body {
-            background-image: url("{{ asset('assets/images/data/background.jpg') }}");
+
+        body{
+            background: url("{{ asset('assets/images/data/home.jpg') }}");
+            background-size: cover;
             background-position: center;
-            background-size: cover
         }
-        .card-body {
-            box-shadow: 0px 0px 25px #226127;
+
+        @media (max-width: 768px) {
+            .card-body img {
+                width:150px !important;
+                height: 150px !important;
+            }
+        }
+
+
+
+        label{
+            font-weight: bold !important
+        }
+
+        .form-label{
+            margin-top:15px
+        }
+
+        .card{
             border-radius: 20px;
+        }
+
+        .card-body {
+            /* box-shadow: 0px 0px 25px #8adb657e; */
+            border-radius: 20px;
+        }
+
+        .btn.btn-success, .btn.btn-secondary, .btn.btn-warning, .btn.btn-primary, .btn.btn-danger, .btn.btn-info {
+            color: #fff !important;
         }
     </style>
 
@@ -56,16 +90,21 @@
     <div class="fix-wrapper">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-6">
+                <div class="col-lg-6 col-md-6">
                     <div class="card mb-0 h-auto">
                         <div class="card-body">
-                            <div class="text-center mb-2">
-                                <a href="{{ route('home') }}">
-                                    <img src="{{ asset('assets/images/data/logo1.svg') }}" alt="logo" style="height: 100px;width:200px">
-                                </a>
+                            <div>
+                                <div class="text-center mb-4" style="display: flex;justify-content:space-evenly">
+                                    <a href="{{ route('home') }}">
+                                        <img src="{{ asset('assets/images/data/logo-1.png') }}" alt="logo" style="height: 200px;width:200px">
+                                    </a>
+                                    <a href="{{ route('home') }}">
+                                        <img src="{{ asset('assets/images/data/logo-2.png') }}" alt="logo" style="height: 200px;width:200px">
+                                    </a>
+                                </div>
+                                {{-- <h4 class="text-center mb-4 mt-4">تسجيل الدخول</h4> --}}
+                                @livewire('user.login')
                             </div>
-                            <h4 class="text-center mb-4">تسجيل الدخول</h4>
-                            @livewire('user.login')
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">القسم</label>
+                    <label class="department_id">القسم</label>
                     <select class="form-control" wire:model.lazy='department_id' id="department_id" @if($method != 'add' && count($teacher->reviews) > 0) disabled @endif>
                         @foreach ($departments as $department)
                             <option value="{{ $department->id }}" @if($department_id == $department->id) selected @endif>{{ $department->name }}</option>

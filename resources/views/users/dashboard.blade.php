@@ -6,11 +6,11 @@
 
         <div class="row">
             <div class="col-xl-3 col-xxl-3 col-sm-6">
-                <div class="widget-stat card bg-primary">
+                <div class="widget-stat card" style="background: #4eaf52">
                     <div class="card-body">
                         <div class="media">
                             <span class="me-3">
-                                <i class="la la-school"></i>
+                                <img src="{{ asset('assets/images/data/icons/school.png') }}" alt="">
                             </span>
                             <div class="media-body text-white">
                                 <p class="mb-1">عدد المدارس</p>
@@ -21,11 +21,11 @@
                 </div>
             </div>
             <div class="col-xl-3 col-xxl-3 col-sm-6">
-                <div class="widget-stat card bg-warning">
+                <div class="widget-stat card" style="background: #4eaf52">
                     <div class="card-body">
                         <div class="media">
                             <span class="me-3">
-                                <i class="la la-building"></i>
+                                <img src="{{ asset('assets/images/data/icons/dep.png') }}" alt="">
                             </span>
                             <div class="media-body text-white">
                                 <p class="mb-1">عدد الأقسام</p>
@@ -36,11 +36,11 @@
                 </div>
             </div>
             <div class="col-xl-3 col-xxl-3 col-sm-6">
-                <div class="widget-stat card bg-secondary">
+                <div class="widget-stat card" style="background: #4eaf52">
                     <div class="card-body">
                         <div class="media">
                             <span class="me-3">
-                                <i class="la la-users"></i>
+                                <img src="{{ asset('assets/images/data/icons/teacher.png') }}" alt="">
                             </span>
                             <div class="media-body text-white">
                                 <p class="mb-1">عدد المعلمين</p>
@@ -51,11 +51,11 @@
                 </div>
             </div>
             <div class="col-xl-3 col-xxl-3 col-sm-6">
-                <div class="widget-stat card bg-danger">
+                <div class="widget-stat card" style="background: #4eaf52">
                     <div class="card-body">
                         <div class="media">
                             <span class="me-3">
-                                <i class="la la-user"></i>
+                                <img src="{{ asset('assets/images/data/icons/boss.png') }}" alt="">
                             </span>
                             <div class="media-body text-white">
                                 <p class="mb-1">عدد المدراء المساعدين</p>
