@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'asset_url' => 'http://localhost/paaet-halls/public',
+    'asset_url' => 'http://localhost/elnajat_edu/public',
 
     /*
     |--------------------------------------------------------------------------

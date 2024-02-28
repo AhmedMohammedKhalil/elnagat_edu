@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\School;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -13,7 +14,8 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::all();
-        return view("departments.index", compact("departments"));
+        $schools = School::all();
+        return view("departments.index", compact("departments",'schools'));
     }
 
     /**

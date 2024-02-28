@@ -66,7 +66,11 @@ class School extends Component
                 $ids[] = $admin->id;
             }
         }
+        if($this->method == 'edit'){
+            $ids[] = $this->sub_admin_id;
+        }
         $this->sub_admins = User::whereIn('id', $ids)->get();
+
 
         return view('livewire.school.school');
     }

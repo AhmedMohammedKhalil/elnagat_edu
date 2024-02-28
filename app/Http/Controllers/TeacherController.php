@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\School;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -20,8 +21,9 @@ class TeacherController extends Controller
 
     public function teachers(Request $request)
     {
-        $school = School::whereId($request->id)->first();
-        return view("teachers.all-teachers", compact("school"));
+        $schoo_id = $request->id;
+        $departments = Department::where('school_id',$request->id)->get();
+        return view("teachers.all-teachers", compact("departments","school_id"));
     }
 
     /**

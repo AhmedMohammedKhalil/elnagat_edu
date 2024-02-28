@@ -15,6 +15,7 @@ class AddEdit extends Component
         $this->method = $method;
         if($this->method == 'editOfficial' || $this->method == 'editSubAdmin') {
             $this->user = User::whereId($user_id)->first();
+            $this->email = $this->user->email;
             $this->name = $this->user->name;
             $this->gender = $this->user->gender;
         }

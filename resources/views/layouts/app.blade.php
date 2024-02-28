@@ -8,76 +8,147 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Clothes Recomendation') }}</title>
+    <title>{{ config('app.name', 'Elnajat Eductaion') }}</title>
 
-    <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}">
-    <meta name="format-detection" content="telephone=no">
-
-
-
+    {{-- <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}"> --}}
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <!-- Scripts -->
-    {{--
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/rtl.css')}}">
+    @include('layouts.includes.styles')
     @livewireStyles
     @stack('css')
+    <style>
+
+        :root {
+            --primary: #004d71 !important;
+            --primary-hover: #0586c3 !important;
+        }
+        *{
+            font-size: 16px;
+        }
+        body {
+            background-image: url("{{ asset('assets/images/data/background.jpg') }}");
+            background-position: center;
+            background-size: cover
+        }
+        li a{
+            font-size: 14px !important;
+
+        }
+        @media only screen and (max-width: 767px) {
+            .nav-header {
+                width: 7rem;
+            }
+        }
+
+        .nav-label.first {
+            font-size: 16px !important;
+        }
+
+        .page-titles {
+            background-image: url("{{ asset('assets/images/data/cover1.jpg') }}");
+            background-size:cover;
+            height: 300px;
+        }
+        .page-titles > .col-sm-12{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer {
+            background: #226127
+        }
+        .copyright p{
+            font-size: 18px;
+            color: white !important
+        }
+
+        .content-body {
+            min-height: calc(100vh - 6.7rem) !important;
+        }
+
+        thead, tbody, tfoot, tr, td, th {
+            padding: 5px;
+        }
+
+        table.dataTable thead .sorting {
+            text-align: center
+        }
+
+        [data-headerbg="color_2"][data-theme-version="dark"], [data-headerbg="color_2"] {
+            --headerbg: #226127;
+        }
+
+        [data-sidebarbg="color_2"][data-theme-version="dark"], [data-sidebarbg="color_2"] {
+            --sidebar-bg: #226127;
+        }
+
+        [data-sidebarbg="color_2"][data-theme-version="dark"] .menu-toggle .dlabnav .metismenu li > ul, [data-sidebarbg="color_2"] .menu-toggle .dlabnav .metismenu li > ul {
+            background: #226127 !important
+        }
+
+        .dropdown-menu {
+            background: #226127 !important;
+            color: white
+        }
+
+        .dropdown-menu a *{
+            color: white !important
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.15); !important;
+            color: white
+
+        }
+
+        .dlabnav li a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .overlay-box:after {
+            background: #709bb0 !important;
+        }
+
+        .content-body .nav-item:hover {
+            background-color: var(--primary);
+            color:white;
+            border-radius: 5px
+        }
+
+        .content-body .nav-item:hover a{
+            color:white;
+        }
+
+        .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+            border-color: var(--primary-hover);
+            background-color: #004d71c7 !important;
+        }
+
+    </style>
 </head>
 
 <body>
-    <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-
-
-
-
-    <footer id="pt-footer" class="pt-offset-10">
-
-        <div class="pt-footer-custom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- copyright -->
-                        <div class="pt-box-copyright" dir="ltr">
-                            &copy; 2023 Clothes Recomendation. All Rights Reserved.
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
         </div>
-
-    </footer>
-    <a href="#" id="js-back-to-top" class="pt-back-to-top">
-        <span class="pt-icon">
-            <svg version="1.1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;"
-                xml:space="preserve">
-                <g>
-                    <polygon fill="currentColor" points="20.9,17.1 12.5,8.6 4.1,17.1 2.9,15.9 12.5,6.4 22.1,15.9 	">
-                    </polygon>
-                </g>
-            </svg>
-        </span>
-        <span class="pt-text">BACK TO TOP</span>
-    </a>
-
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="external/jquery/jquery.min.js"><\/script>')
-    </script>
-    <script async src="js/bundle.js"></script>
-
-    @include('layouts.svg')
+    </div>
+    <div id="main-wrapper">
+        @include('layouts.includes.header')
+        @include('layouts.includes.sidebar')
+        <div style="padding-top: 2rem">
+            @yield('content')
+        </div>
+        @include('layouts.includes.footer')
+    </div>
+    @include('layouts.includes.js')
     @livewireScripts
     @stack('js')
 </body>
-
 </html>

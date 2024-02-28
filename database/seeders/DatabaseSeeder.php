@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
+        \App\Models\User::create([
             'name' => 'الأدمن',
             'email' => 'admin@elnagat_edu.com',
             'role' => 'admin',
@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" //password
         ]);
 
-        \App\Models\User::factory()->create([
+        \App\Models\User::create([
             'name' => 'طلال',
             'email' => 'talal@elnagat_edu.com',
             'role' => 'official',
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" //password
         ]);
 
-        \App\Models\User::factory()->create([
+        \App\Models\User::create([
             'name' => 'sara',
             'email' => 'sara@elnagat_edu.com',
             'role' => 'official',

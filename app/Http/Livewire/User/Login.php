@@ -28,13 +28,6 @@ class Login extends Component
         if(Auth::attempt($validatedData)){
             session()->flash('message', "تم دخولك ينجاح");
             return redirect()->route('profile');
-            // if(auth()->user()->role == "admin"){
-            //     return redirect()->route('admin.profile');
-            // } elseif(auth()->user()->role == "official"){
-            //     return redirect()->route('official.profile');
-            // }else {
-            //     return redirect()->route('sub_admin.profile');
-            // }
 
         }else{
             session()->flash('error', 'هناك خطا فى الايميل او الباسورد');
