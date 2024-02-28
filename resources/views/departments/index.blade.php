@@ -40,7 +40,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($depratments as $department)
+                                                @foreach($departments as $department)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $department->name }}</td>
@@ -60,7 +60,7 @@
                                                         </td>
                                                     </tr>
                                                 @endforeach
-                                                @if(count($depratments) == 0)
+                                                @if(count($departments) == 0)
                                                     <tr>
                                                         <td colspan="5">
                                                             <h4 class="text-center">لا يوجد أقسام </h4>
