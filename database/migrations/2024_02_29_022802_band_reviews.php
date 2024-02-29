@@ -11,18 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('band_reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('teacher_id')->unsigned();
-            $table->foreign('teacher_id')
-                ->references('id')->on('teachers')
+            $table->string('value');
+            $table->integer('band_id')->unsigned();
+            $table->foreign('band_id')
+                ->references('id')->on('bands')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('week_id')->unsigned();
-            $table->foreign('week_id')
-                ->references('id')->on('weeks')
+            $table->integer('review_id')->unsigned();
+            $table->foreign('review_id')
+                ->references('id')->on('reviews')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->string('result');
-            $table->date('date');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        //
     }
 };
