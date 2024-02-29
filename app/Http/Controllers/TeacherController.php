@@ -21,7 +21,7 @@ class TeacherController extends Controller
 
     public function teachers(Request $request)
     {
-        $schoo_id = $request->id;
+        $school_id = $request->id;
         $departments = Department::where('school_id',$request->id)->get();
         return view("teachers.all-teachers", compact("departments","school_id"));
     }
