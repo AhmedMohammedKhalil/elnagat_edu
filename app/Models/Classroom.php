@@ -10,13 +10,13 @@ class Classroom extends Model
     use HasFactory;
 
 
-    protected $table="levels";
+    protected $table="classrooms";
     protected $fillable = [
         'name',
         'level_id',
     ];
 
-    public function teachers() {
-        return $this->hasMany(Teacher::class);
+    public function level() {
+        return $this->belongsTo(Level::class,"level_id","id");
     }
 }

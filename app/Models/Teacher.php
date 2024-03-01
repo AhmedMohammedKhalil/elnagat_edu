@@ -21,7 +21,7 @@ class Teacher extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function level() {
-        return $this->belongsTo(Level::class);
+    public function levels() {
+        return $this->hasMany(Level::class);
     }
 }

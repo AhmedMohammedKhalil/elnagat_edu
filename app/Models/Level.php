@@ -15,8 +15,10 @@ class Level extends Model
         'teacher_id',
     ];
 
-    public function teachers() {
-        return $this->hasMany(Teacher::class);
+    public function teacher() {
+        return $this->belongsTo(Teacher::class);
     }
-
+    public function classrooms() {
+        return $this->hasMany(Classroom::class);
+    }
 }
