@@ -12,6 +12,7 @@ class School extends Model
     protected $fillable = [
         'owner',
         'sub_admin_id',
+        'offecial_id',
         'name'
     ];
 

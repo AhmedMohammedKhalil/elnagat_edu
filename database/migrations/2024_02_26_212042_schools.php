@@ -19,6 +19,11 @@ return new class extends Migration
             $table->foreign('sub_admin_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
+
+            $table->integer('offecial_id')->unsigned();
+            $table->foreign('offecial_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
