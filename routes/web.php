@@ -72,6 +72,22 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', 'DepartmentController@destroy')->name('destroy');
         });
 
+        Route::prefix('levels')->name('levels.')->group(function () {
+            Route::get('/', 'LevelController@index')->name('index');
+            Route::get('/create', 'LevelController@create')->name('create');
+            Route::get('/edit', 'LevelController@edit')->name('edit');
+            Route::get('/show', 'LevelController@show')->name('show');
+            Route::delete('/delete', 'LevelController@destroy')->name('destroy');
+        });
+
+        Route::prefix('classrooms')->name('classrooms.')->group(function () {
+            Route::get('/', 'ClassroomController@index')->name('index');
+            Route::get('/create', 'ClassroomController@create')->name('create');
+            Route::get('/edit', 'ClassroomController@edit')->name('edit');
+            Route::get('/show', 'ClassroomController@show')->name('show');
+            Route::delete('/delete', 'ClassroomController@destroy')->name('destroy');
+        });
+
 
         Route::prefix('teachers')->name('teachers.')->group(function () {
             Route::get('/', 'TeacherController@index')->name('index');

@@ -21,6 +21,12 @@
                     <span class="nav-text">فريق التشغيل</span>
                 </a>
             </li>
+
+             <li><a class="ai-icon" href="#" aria-expanded="false">
+                    <i class="la la-users"></i>
+                    <span class="nav-text"> الاسبوع</span>
+                </a>
+            </li>
             @else
             {{-- <li><a class="ai-icon" href="{{ route('sub_admins.index') }}" aria-expanded="false">
                     <i class="la la-user"></i>
@@ -42,6 +48,20 @@
                         <span class="nav-text">المعلمين</span>
                     </a>
                 </li>
+
+                {{-- <li><a class="ai-icon" href="{{ route('levels.index') }}" aria-expanded="false">
+                        <i class="la la-building"></i>
+                        <span class="nav-text">المستويات</span>
+                    </a>
+                </li>
+
+                <li><a class="ai-icon" href="#" aria-expanded="false">
+                        <i class="la la-building"></i>
+                        <span class="nav-text">الفصول</span>
+                    </a>
+                </li> --}}
+
+                
             @endif
             @else
                 <li><a class="ai-icon" href="{{ route('') }}" aria-expanded="false">
