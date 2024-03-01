@@ -37,7 +37,10 @@ class User extends Authenticatable
     ];
 
 
-    public function schools() {
-        return $this->hasMany(School::class,'sub_admin_id');
+    public function school() {
+        return $this->hasOne(School::class,'sub_admin_id');
+    }
+    public function owner() {
+        return $this->hasOne(School::class,'official_id');
     }
 }

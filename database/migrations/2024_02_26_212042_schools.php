@@ -20,8 +20,8 @@ return new class extends Migration
                 ->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('offecial_id')->unsigned();
-            $table->foreign('offecial_id')
+            $table->integer('official_id')->unsigned();
+            $table->foreign('official_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

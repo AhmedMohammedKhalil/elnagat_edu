@@ -12,12 +12,16 @@ class School extends Model
     protected $fillable = [
         'owner',
         'sub_admin_id',
-        'offecial_id',
+        'official_id',
         'name'
     ];
 
     public function sub_admin() {
         return $this->belongsTo(User::class,'sub_admin_id','id');
+    }
+
+    public function official() {
+        return $this->belongsTo(User::class,'official_id','id');
     }
 
     public function departments() {
