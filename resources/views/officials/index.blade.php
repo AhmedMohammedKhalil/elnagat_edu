@@ -35,6 +35,7 @@
                                                 <th>الإسم</th>
                                                 <th>النوع</th>
                                                 <th>البريد الإلكترونى</th>
+                                                <th>المدرسة</th>
                                                 <th>الإعدادات</th>
                                             </tr>
                                         </thead>
@@ -45,10 +46,12 @@
                                                     <td>{{ $official->name }}</td>
                                                     <td>{{ $official->gender }}</td>
                                                     <td>{{ $official->email }}</td>
+                                                    <td>{{ $official->owner?->name }}</td>
+
 
                                                     <td>
                                                         <a href="{{ route('officials.edit',['id' => $official->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
-                                                        @if(count($official->owner ?? []) == 0)
+                                                        @if(!$official->owner)
                                                         <form style="display:inline-block" action="{{route('officials.destroy',['id'=>$official->id])}}" method="post">
                                                             @csrf
                                                             @method('delete')
@@ -62,7 +65,7 @@
                                             @endforeach
                                             @if(count($officials) == 0)
                                                 <tr>
-                                                    <td colspan="5">
+                                                    <td colspan="6">
                                                         <h4 class="text-center">لا يوجد فريق تشغيل</h4>
                                                     </td>
                                                 </tr>

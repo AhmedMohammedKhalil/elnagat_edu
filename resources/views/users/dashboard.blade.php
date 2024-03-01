@@ -65,6 +65,36 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="widget-stat card" style="background: #4eaf52">
+                    <div class="card-body">
+                        <div class="media">
+                            <span class="me-3">
+                                <img src="{{ asset('assets/images/data/icons/boss.png') }}" alt="">
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">عدد أعضاء فريق التشغيل</p>
+                                <h3 class="text-white">{!! App\Models\User::where('role','official')->count() !!}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-xxl-3 col-sm-6">
+                <div class="widget-stat card" style="background: #4eaf52">
+                    <div class="card-body">
+                        <div class="media">
+                            <span class="me-3">
+                                <img src="{{ asset('assets/images/data/icons/boss.png') }}" alt="">
+                            </span>
+                            <div class="media-body text-white">
+                                <p class="mb-1">عدد التقييمات</p>
+                                <h3 class="text-white">{!! App\Models\Review::Count() !!}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
