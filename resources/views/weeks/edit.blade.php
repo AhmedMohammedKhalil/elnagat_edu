@@ -15,7 +15,7 @@
             <div class="col-lg-6 col-sm-12 m-auto">
                 <div class="card">
                     <div class="card-body">
-                        <livewire:week.week method='edit' :user_id='$week_id' />
+                        <livewire:week.week method='edit' :week_id='$week_id' />
                     </div>
                 </div>
             </div>

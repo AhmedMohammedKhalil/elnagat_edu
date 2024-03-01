@@ -59,7 +59,7 @@ class Week extends Component
         ]);
         ModelsWeek::create($data_week);
         session()->flash('message', "Week Added successful.");
-        return redirect()->route('Weeks.index');
+        return redirect()->route('weeks.index');
     }
 
 
@@ -76,7 +76,7 @@ class Week extends Component
         ]);
         $this->Week->update($data_week);
         session()->flash('message', "Week Updated successful.");
-        return redirect()->route('Weeks.index');
+        return redirect()->route('weeks.index');
     }
 
     public function render()

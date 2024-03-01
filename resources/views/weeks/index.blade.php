@@ -49,7 +49,7 @@
                                                     <td>{{ $week->end_date }}</td>
 
                                                     <td>
-                                                        @if(!$week->reviews)
+                                                        @if(count($week->reviews) == 0)
                                                         <a href="{{ route('weeks.edit',['id' => $week->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
                                                         <form style="display:inline-block" action="{{route('weeks.destroy',['id'=>$week->id])}}" method="post">
                                                             @csrf

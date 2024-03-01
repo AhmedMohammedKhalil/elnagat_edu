@@ -18,13 +18,7 @@
             </li>
             <li><a class="ai-icon" href="{{ route('officials.index') }}" aria-expanded="false">
                     <i class="la la-users"></i>
-                    <span class="nav-text">فريق التشغيل</span>
-                </a>
-            </li>
-
-             <li><a class="ai-icon" href="#" aria-expanded="false">
-                    <i class="la la-users"></i>
-                    <span class="nav-text"> الاسبوع</span>
+                    <span class="nav-text">الفريق التشغيلى</span>
                 </a>
             </li>
             @else
@@ -61,7 +55,7 @@
                     </a>
                 </li> --}}
 
-                
+
             @endif
             @else
                 <li><a class="ai-icon" href="{{ route('') }}" aria-expanded="false">

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('weeks', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('week_index');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
