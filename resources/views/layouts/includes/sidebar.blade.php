@@ -4,44 +4,46 @@
             <li class="nav-label first">القائمة الرئيسية</li>
 
             @if(auth()->user()->role != 'sub_admin')
-            <li><a class="ai-icon" href="{{ route('dashboard') }}" aria-expanded="false">
+            @if(auth()->user()->role == 'admin')
+            <li>
+                <a class="ai-icon" href="{{ route('dashboard') }}" aria-expanded="false">
                     <i class="la la-home"></i>
                     <span class="nav-text">لوحة التحكم</span>
                 </a>
             </li>
-            <li><a class="ai-icon" href="{{ route('sub_admins.index') }}" aria-expanded="false">
-                    <i class="la la-user"></i>
-                    <span class="nav-text">المدراء المساعدين</span>
-                </a>
-            </li>
-            <li><a class="ai-icon" href="{{ route('schools.index') }}" aria-expanded="false">
-                    <i class="la la-school"></i>
-                    <span class="nav-text">المدارس</span>
-                </a>
-            </li>
-            <li><a class="ai-icon" href="{{ route('departments.index') }}" aria-expanded="false">
-                    <i class="la la-building"></i>
-                    <span class="nav-text">الأقسام</span>
-                </a>
-            </li>
-            <li><a class="ai-icon" href="{{ route('teachers.index') }}" aria-expanded="false">
-                    <i class="la la-users"></i>
-                    <span class="nav-text">المعلمين</span>
-                </a>
-            </li>
-            @if(auth()->user()->role == 'admin')
             <li><a class="ai-icon" href="{{ route('officials.index') }}" aria-expanded="false">
                     <i class="la la-users"></i>
                     <span class="nav-text">فريق التشغيل</span>
                 </a>
             </li>
+            @else
+            {{-- <li><a class="ai-icon" href="{{ route('sub_admins.index') }}" aria-expanded="false">
+                    <i class="la la-user"></i>
+                    <span class="nav-text">المدراء المساعدين</span>
+                </a>
+            </li> --}}
+                <li><a class="ai-icon" href="{{ route('schools.index') }}" aria-expanded="false">
+                        <i class="la la-school"></i>
+                        <span class="nav-text">المدارس</span>
+                    </a>
+                </li>
+                <li><a class="ai-icon" href="{{ route('departments.index') }}" aria-expanded="false">
+                        <i class="la la-building"></i>
+                        <span class="nav-text">الأقسام</span>
+                    </a>
+                </li>
+                <li><a class="ai-icon" href="{{ route('teachers.index') }}" aria-expanded="false">
+                        <i class="la la-users"></i>
+                        <span class="nav-text">المعلمين</span>
+                    </a>
+                </li>
             @endif
             @else
-            <li><a class="ai-icon" href="{{ route('') }}" aria-expanded="false">
-                    <i class="la la-users"></i>
-                    <span class="nav-text">التقييمات</span>
-                </a>
-            </li>
+                <li><a class="ai-icon" href="{{ route('') }}" aria-expanded="false">
+                        <i class="la la-users"></i>
+                        <span class="nav-text">التقييمات</span>
+                    </a>
+                </li>
             @endif
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                     <i class="la la-id-card-alt"></i>

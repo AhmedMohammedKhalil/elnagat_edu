@@ -11,10 +11,10 @@ class Teacher extends Component
 
     public $name,$department_id,$method,$teacher,$departments;
 
-    public function mount($method,$school_id,?int $teacher_id) {
+    public function mount($method,?int $teacher_id) {
         $this->method = $method;
-        $this->departments = Department::where("school_id",$school_id)->get();
-        $department = Department::where("school_id",$school_id)->first();
+        $this->departments = auth()->user()->owner->departments;
+        $department = Department::where("school_id",auth()->user()->owner->id)->first();
         $this->department_id = $department->id;
         //$this->school_id = (isset($school_id) && $school_id != null) ? $school_id : $this->school_id;
         if($this->method == 'edit') {

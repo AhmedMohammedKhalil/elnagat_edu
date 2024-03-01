@@ -13,7 +13,7 @@
         </div>
 
         <div class="row">
-            @if(count($schools) > 0)
+            @if(auth()->user()->owner)
                 <div class="col-lg-12">
                     <ul class="nav nav-pills mb-3">
                         <li class="nav-item"><a href="#list-view" data-bs-toggle="tab" class="nav-link me-1 show active">عرض الأقسام</a></li>
@@ -91,7 +91,7 @@
 
             @else
                 <div class="col-12">
-                    <h2 class="text-center">لا يوجد  مدارس لابد من إضافة المدارس اولاً</h2>
+                    <h2 class="text-center">لا يوجد  مدرسة لديك لابد من إضافة المدرسة اولاً</h2>
                 </div>
             @endif
         </div>

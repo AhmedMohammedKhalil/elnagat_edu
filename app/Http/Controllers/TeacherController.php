@@ -14,25 +14,17 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $schools = School::all();
-        return view("teachers.index", compact("schools"));
+        $departments = auth()->user()->owner ? auth()->user()->owner->departments : "";
+        return view("teachers.index", compact("departments"));
     }
 
-
-    public function teachers(Request $request)
-    {
-        $school_id = $request->id;
-        $departments = Department::where('school_id',$request->id)->get();
-        return view("teachers.all-teachers", compact("departments","school_id"));
-    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
     {
-        $school_id = $request->id;
-        return view("teachers.create", compact("school_id"));
+        return view("teachers.create");
     }
 
 
