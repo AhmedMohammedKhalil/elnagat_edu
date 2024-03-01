@@ -31,7 +31,7 @@ class AddEdit extends Component
 
     protected $messages = [
         'required' => 'ممنوع ترك الحقل فارغاَ',
-        'min' => 'لابد ان يكون الحقل مكون على الاقل من 8 خانات',
+        'min' => 'لابد ان يكون الحقل مكون على الاقل من 4 خانات',
         'email' => 'هذا الإيميل غير صحيح',
         'name.max' => 'لابد ان يكون الحقل مكون على الاكثر من 50 خانة',
         'unique' => 'هذا الايميل مسجل فى الموقع',
@@ -47,8 +47,8 @@ class AddEdit extends Component
     public function updatedPassword() {
         $validatedData = $this->validate(
             [
-                'password' => ['required', 'string', 'min:8'],
-                'confirm_password' => ['required', 'string', 'min:8','same:password'],
+                'password' => ['required', 'string', 'min:4'],
+                'confirm_password' => ['required', 'string', 'min:4','same:password'],
             ],
         );
     }
@@ -59,11 +59,11 @@ class AddEdit extends Component
             array_merge(
                 $this->rules,
                 [
-                    'email'   => ['required','email',"unique:users,email",
-                    'password' => ['required', 'string', 'min:8'],
-                    'confirm_password' => ['required', 'string', 'min:8','same:password'],
+                    'email'   => ['required','email',"unique:users,email"],
+                    'password' => ['required', 'string', 'min:4'],
+                    'confirm_password' => ['required', 'string', 'min:4','same:password'],
                 ],
-        ]));
+        ));
         $data = array_merge(
             $validatedData,
             ['password' => Hash::make($this->password)]
@@ -84,10 +84,10 @@ class AddEdit extends Component
                 array_merge(
                     $this->rules,
                     [
-                         'email'   => ['required','email',"unique:users,email,".$this->user->id],
-                         'password' => Hash::make($this->password)
+                        'email'   => ['required','email',"unique:users,email,".$this->user->id],
                     ])
             );
+            $validatedata = array_merge($validatedata,['password' => Hash::make($this->password)]);
         }
         User::whereId($this->user->id)->update($validatedata);
     }

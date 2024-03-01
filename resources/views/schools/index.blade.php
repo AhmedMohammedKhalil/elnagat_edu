@@ -12,12 +12,12 @@
             </div>
         </div>
         <div class="row">
-            @if(count($sub_admins) > 0)
-
                 <div class="col-lg-12">
                     <ul class="nav nav-pills mb-3">
-                        <li class="nav-item"><a href="#list-view" data-bs-toggle="tab" class="nav-link me-1 show active">عرض المدارس</a></li>
+                        <li class="nav-item"><a href="#list-view" data-bs-toggle="tab" class="nav-link me-1 show active">عرض المدرسة</a></li>
+                        @if(!auth()->user()->owner)
                         <li class="nav-item"><a href="#add-school" data-bs-toggle="tab" class="nav-link">إضافة مدرسة جديدة</a></li>
+                        @endif
                     </ul>
                 </div>
                 <div class="col-lg-12">
@@ -25,28 +25,27 @@
                         <div id="list-view" class="tab-pane fade active show col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">جميع المدارس</h4>
+                                    <h4 class="card-title">بيانات المدرسة</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table id="example5" class="display text-nowrap text-center" style="min-width: 845px">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>الإسم</th>
                                                     <th>مدير المدرسة</th>
                                                     <th>المدير المساعد</th>
+                                                    <th>البريد الإلكترونى</th>
                                                     <th>الإعدادات</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($schools as $school)
+                                                @if($school)
                                                     <tr>
-                                                        <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $school->name }}</td>
                                                         <td>{{ $school->owner }}</td>
                                                         <td>{{ $school->sub_admin->name }}</td>
-
+                                                        <td>{{ $school->sub_admin->email }}</td>
                                                         <td>
                                                             <a href="{{ route('schools.edit',['id' => $school->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
                                                             @if(count($school->departments) == 0)
@@ -60,8 +59,7 @@
                                                             @endif
                                                         </td>
                                                     </tr>
-                                                @endforeach
-                                                @if(count($schools) == 0)
+                                                @else
                                                     <tr>
                                                         <td colspan="5">
                                                             <h4 class="text-center">لا يوجد مدارس </h4>
@@ -75,6 +73,7 @@
                                 </div>
                             </div>
                         </div>
+                        @if(!auth()->user()->owner)
                         <div id="add-school" class="tab-pane fade col-lg-12 row">
                             <div class="col-lg-6 col-sm-12 m-auto">
                                 <div class="card">
@@ -87,14 +86,9 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
-
-            @else
-                <div class="col-12">
-                    <h2 class="text-center">لا يوجد مدراء مساعدين لابد من إضافة المدراء المساعدين اولاً</h2>
-                </div>
-            @endif
         </div>
     </div>
 @endsection

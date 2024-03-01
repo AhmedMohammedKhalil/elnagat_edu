@@ -13,16 +13,8 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = School::all();
-        $sub_admins = User::where('role','sub_admin')->get();
-        $ids = [];
-        foreach ($sub_admins as $admin){
-            if(!School::where('sub_admin_id', $admin->id)->first()) {
-                $ids[] = $admin->id;
-            }
-        }
-        $sub_admins = User::whereIn('id', $ids)->get();
-        return view("schools.index", compact("schools",'sub_admins'));
+        $school = auth()->user()->owner;
+        return view("schools.index", compact("school"));
     }
 
     /**

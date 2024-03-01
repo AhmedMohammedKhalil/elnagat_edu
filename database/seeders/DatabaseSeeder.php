@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::create([
             'name' => 'الأدمن',
-            'email' => 'admin@elnajat.edu.com',
+            'email' => 'admin@alnajat.edu.kw',
             'role' => 'admin',
             'gender' => 'ذكر',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" //password
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::create([
             'name' => 'طلال',
-            'email' => 'talal@elnajat.edu.com',
+            'email' => 'talal@alnajat.edu.kw',
             'role' => 'official',
             'gender' => 'ذكر',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" //password
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::create([
             'name' => 'سارة عثمان',
-            'email' => 'sara@elnajat.edu.com',
+            'email' => 'sara@alnajat.edu.kw',
             'role' => 'official',
             'gender' => 'أنثى',
             'password' => "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi" //password

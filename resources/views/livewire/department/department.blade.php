@@ -18,17 +18,6 @@
                     @error('owner') <span class="text-danger error">{{ $message }}</span>@enderror
                 </div>
 
-
-                <div class="form-group">
-                    <label class="form-label">المدرسة</label>
-                    <select class="form-control" wire:model.lazy='school_id' id="school_id" @if($method != 'add' && count($department->teachers) > 0) disabled @endif>
-                        @foreach ($schools as $school)
-                            <option value="{{ $school->id }}" @if($school_id == $school->id) selected @endif>{{ $school->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('school_id') <span class="text-danger error">{{ $message }}</span>@enderror
-                </div>
-
                 @if($method != "add")
                     <button type="submit" class="btn btn-primary d-block m-auto">حفظ التغييرات</button>
                 @else

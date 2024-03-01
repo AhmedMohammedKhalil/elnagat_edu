@@ -48,6 +48,7 @@
 
                                                     <td>
                                                         <a href="{{ route('officials.edit',['id' => $official->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
+                                                        @if(count($official->owner ?? []) == 0)
                                                         <form style="display:inline-block" action="{{route('officials.destroy',['id'=>$official->id])}}" method="post">
                                                             @csrf
                                                             @method('delete')
@@ -55,6 +56,7 @@
                                                                 <i class='fa fa-trash'></i>
                                                             </button>
                                                         </form>
+                                                        @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

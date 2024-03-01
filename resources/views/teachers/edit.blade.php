@@ -15,7 +15,7 @@
             <div class="col-lg-6 col-sm-12 m-auto">
                 <div class="card">
                     <div class="card-body">
-                        <livewire:teacher.teacher method='edit' :school_id='$school_id' :teacher_id='$teacher_id' />
+                        <livewire:teacher.teacher method='edit' :teacher_id='$teacher_id' />
                     </div>
                 </div>
             </div>

@@ -19,13 +19,13 @@ class ChangePassword extends Component
 
     protected $rules = [
 
-        'password' => ['required', 'string', 'min:8'],
-        'confirm_password' => ['required', 'string', 'min:8','same:password'],
+        'password' => ['required', 'string', 'min:4'],
+        'confirm_password' => ['required', 'string', 'min:4','same:password'],
     ];
 
     protected $messages = [
         'required' => 'ممنوع ترك الحقل فارغاَ',
-        'min' => 'لابد ان يكون الحقل مكون على الاقل من 8 خانات',
+        'min' => 'لابد ان يكون الحقل مكون على الاقل من 4 خانات',
         'same' => 'لابد ان يكون الباسورد متطابق',
     ];
 

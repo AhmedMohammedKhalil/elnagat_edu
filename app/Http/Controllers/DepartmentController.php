@@ -13,9 +13,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments = Department::all();
-        $schools = School::all();
-        return view("departments.index", compact("departments",'schools'));
+        $departments = auth()->user()->owner->departments;
+        return view("departments.index", compact("departments"));
     }
 
     /**

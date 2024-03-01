@@ -13,12 +13,12 @@ class Login extends Component
 
     protected $rules = [
         'email'   => 'required|email|exists:users,email',
-        'password' => 'required|min:8'
+        'password' => 'required|min:4'
     ];
 
     protected $messages = [
         'required' => 'ممنوع ترك الحقل فارغاَ',
-        'min' => 'لابد ان يكون الحقل مكون على الاقل من 8 خانات',
+        'min' => 'لابد ان يكون الحقل مكون على الاقل من 4 خانات',
         'email' => 'هذا الإيميل غير صحيح',
         'exists' => 'هذا الايميل غير مسجل فى الموقع',
     ];

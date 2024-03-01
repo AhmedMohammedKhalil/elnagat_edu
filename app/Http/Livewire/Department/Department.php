@@ -9,13 +9,11 @@ use App\Models\School;
 class Department extends Component
 {
 
-    public $name, $owner, $school_id,$method,$department,$schools;
+    public $name, $owner, $school_id,$method,$department;
 
     public function mount($method,?int $department_id) {
         $this->method = $method;
-        $this->schools = School::all();
-        $school = School::Limit(1)->first();
-        $this->school_id = $school->id;
+        $this->school_id = auth()->user()->owner->id;
         //$this->school_id = (isset($school_id) && $school_id != null) ? $school_id : $this->school_id;
         if($this->method == 'edit') {
             $this->department = ModelsDepartment::whereId($department_id)->first();
