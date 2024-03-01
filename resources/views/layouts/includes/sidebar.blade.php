@@ -11,6 +11,11 @@
                     <span class="nav-text">لوحة التحكم</span>
                 </a>
             </li>
+            <li><a class="ai-icon" href="{{ route('weeks.index') }}" aria-expanded="false">
+                <i class="las la-calendar-week"></i>
+                <span class="nav-text">الأسابيع</span>
+                </a>
+            </li>
             <li><a class="ai-icon" href="{{ route('officials.index') }}" aria-expanded="false">
                     <i class="la la-users"></i>
                     <span class="nav-text">فريق التشغيل</span>

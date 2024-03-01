@@ -36,6 +36,14 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', 'OfficialController@destroy')->name('destroy');
         });
 
+        Route::prefix('weeks')->name('weeks.')->group(function () {
+            Route::get('/', 'WeekController@index')->name('index');
+            Route::get('/create', 'WeekController@create')->name('create');
+            Route::get('/edit', 'WeekController@edit')->name('edit');
+            Route::get('/show', 'WeekController@show')->name('show');
+            Route::delete('/delete', 'WeekController@destroy')->name('destroy');
+        });
+
     });
 
     Route::middleware(['admin-official'])->group(function () {

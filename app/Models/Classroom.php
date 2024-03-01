@@ -10,7 +10,7 @@ class Classroom extends Model
     use HasFactory;
 
 
-    protected $table="levels";
+    protected $table="classrooms";
     protected $fillable = [
         'name',
         'level_id',

@@ -1,13 +1,30 @@
 <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
+{{--
+<link href="{{ asset('assets/vendor/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet" type="text/css" />
 
-<link href="{{ asset('assets/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/vendor/clockpicker/css/bootstrap-clockpicker.min.css')}}" rel="stylesheet" type="text/css" />
 
-<link href="{{ asset('assets/vendor/chartist/css/chartist.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/vendor/jquery-ascolorpicker/css/ascolorpicker.min.css')}}" rel="stylesheet" type="text/css" />
+
+<link href="{{ asset('assets/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet" type="text/css" />
+
+<link href="{{ asset('assets/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css" />
+
+<link href="{{ asset('assets/vendor/pickadate/themes/default.css')}}" rel="stylesheet" type="text/css" />
+
+<link href="{{ asset('assets/vendor/pickadate/themes/default.date.css')}}" rel="stylesheet" type="text/css" />
+
+<link href="{{ asset('assets/vendor/chartist/css/chartist.min.css') }}" rel="stylesheet" type="text/css" /> --}}
 
 <link href="{{ asset('assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet"
     type="text/css" />
 
 <link class="main-css" href="{{ asset('assets/css/style-rtl.css') }}" rel="stylesheet" type="text/css" />
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"> --}}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+
 <style>
         input,textarea,select,option{
             color: #044c71 !important;
@@ -99,6 +116,22 @@
         .page-titles h4, .page-titles .h4{
             font-size: 25px
         }
+
+        .datepicker.dropdown-menu{
+            background: white !important;
+            color: black !important
+        }
+
+        .datepicker table tr td.new, .datepicker table tr td.old {
+            color: #999 !important;
+        }
+
+        .datepicker table tr td.active.active, .datepicker table tr td.active.disabled.active, .datepicker table tr td.active.disabled:active, .datepicker table tr td.active.disabled:hover.active, .datepicker table tr td.active.disabled:hover:active, .datepicker table tr td.active:active, .datepicker table tr td.active:hover.active, .datepicker table tr td.active:hover:active {
+            background-color: #044c71 !important;
+        }
+
+
+
 
 
 </style>
