@@ -104,6 +104,13 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::middleware(['sub-admin'])->group(function () {
+        Route::middleware(['check-weeks'])->prefix('reviews')->name('reviews.')->group(function () {
+            Route::get('/', 'ReviewController@index')->name('index');
+            Route::get('/create', 'ReviewController@create')->name('create');
+            Route::get('/edit', 'ReviewController@edit')->name('edit');
+            Route::get('/show', 'ReviewController@show')->name('show');
+            Route::delete('/delete', 'ReviewController@destroy')->name('destroy');
+        });
     });
 
 

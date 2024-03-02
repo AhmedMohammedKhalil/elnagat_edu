@@ -19,4 +19,8 @@ class Classroom extends Model
     public function level() {
         return $this->belongsTo(Level::class,"level_id","id");
     }
+
+    public function reviews() {
+        return $this->hasMany(Review::class,"classroom_id","id");
+    }
 }

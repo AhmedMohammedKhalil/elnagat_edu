@@ -22,13 +22,14 @@ return new class extends Migration
             $table->foreign('week_id')
                 ->references('id')->on('weeks')
                 ->onDelete('cascade')->onUpdate('cascade');
-            
+
             $table->integer('classroom_id')->unsigned();
             $table->foreign('classroom_id')
             ->references('id')->on('classrooms')
             ->onDelete('cascade')->onUpdate('cascade');
-            
+
             $table->string('result');
+            $table->text('notes');
             $table->date('date');
             $table->string('tasks');
             $table->string('lessons');

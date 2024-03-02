@@ -19,7 +19,7 @@ class Review extends Model
         'date',
         'tasks',
         'lessons',
-        'weekly_plan', 
+        'weekly_plan',
     ];
 
     public function teacher() {
@@ -27,6 +27,10 @@ class Review extends Model
     }
     public function week() {
         return $this->belongsTo(Week::class);
+    }
+
+    public function classroom() {
+        return $this->belongsTo(Classroom::class);
     }
 
     // public function bands()

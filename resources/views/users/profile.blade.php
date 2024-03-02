@@ -16,7 +16,11 @@
                 <div class="card">
                     <div class="text-center p-3">
                         <div class="profile-photo">
-                            <img src="{{ asset('assets/images/data/icons/profile.png') }}" width="100" class="img-fluid rounded-circle" alt="">
+                            @if(auth()->user()->gender == 'ذكر')
+                                <img src="{{ asset('assets/images/data/icons/profile.png') }}" width="100" class="img-fluid rounded-circle" alt=""/>
+                            @else
+                                <img src="{{ asset('assets/images/data/icons/woman.png') }}" width="100" class="img-fluid rounded-circle" alt=""/>
+                            @endif
                         </div>
                         <h3 class="mt-3 mb-1" style="color:#044c71">{{ auth()->user()->name }}</h3>
                     </div>

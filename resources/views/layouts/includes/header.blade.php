@@ -19,7 +19,11 @@
                 <ul class="navbar-nav header-right">
                     <li class="nav-item dropdown header-profile">
                         <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                            <img src="{{ asset('assets/images/data/icons/profile.png') }}" style="height: 50px;width:50px" alt="" />
+                            @if(auth()->user()->gender == 'ذكر')
+                                <img src="{{ asset('assets/images/data/icons/profile.png') }}" style="height: 50px;width:50px" alt="" />
+                            @else
+                                <img src="{{ asset('assets/images/data/icons/woman.png') }}" style="height: 50px;width:50px" alt="" />
+                            @endif
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{ route('profile') }}" class="dropdown-item ai-icon">
