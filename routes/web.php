@@ -43,7 +43,12 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/show', 'WeekController@show')->name('show');
             Route::delete('/delete', 'WeekController@destroy')->name('destroy');
         });
-
+        Route::prefix('reports')->name('reports.')->group(function () {
+            Route::get('/schools', 'ReportingController@schoolReport')->name('schools');
+            Route::get('/schools/data', 'ReportingController@getSchoolReportData')->name('school.data');
+            Route::get('/departments', 'ReportingController@departmentReport')->name('departments');
+            Route::get('/departments/data', 'ReportingController@getDepartmentReportData')->name('department.data');
+        });
     });
 
     Route::middleware(['admin-official'])->group(function () {
@@ -98,7 +103,13 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', 'TeacherController@destroy')->name('destroy');
         });
 
+        Route::prefix('reports')->name('reports.')->group(function () {
+            Route::get('/school', 'ReportingController@officialSchoolReport')->name('official.schools');
+            Route::get('/school/data', 'ReportingController@getOfficialSchoolReportData')->name('official.school.data');
+            Route::get('/department', 'ReportingController@officialDepartmentReport')->name('official.departments');
+            Route::get('/department/data', 'ReportingController@getOfficialDepartmentReportData')->name('official.department.data');
 
+        });
 
     });
 
