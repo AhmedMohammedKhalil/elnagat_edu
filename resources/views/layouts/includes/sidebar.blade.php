@@ -21,6 +21,18 @@
                     <span class="nav-text">الفريق التشغيلى</span>
                 </a>
             </li>
+
+            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="la la-id-card-alt"></i>
+                    <span class="nav-text">التقارير</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('reports.schools') }}">تقارير المدارس</a></li>
+                    <li><a href="{{ route('reports.departments') }}">تقارير الاقسام </a></li>
+                </ul>
+            </li>
+
+
             @else
             {{-- <li><a class="ai-icon" href="{{ route('sub_admins.index') }}" aria-expanded="false">
                     <i class="la la-user"></i>
@@ -42,6 +54,16 @@
                         <span class="nav-text">المعلمين</span>
                     </a>
                 </li>
+
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="la la-id-card-alt"></i>
+                    <span class="nav-text">التقارير</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('reports.official.schools') }}">تقرير المدرسة</a></li>
+                    <li><a href="{{ route('reports.official.departments') }}">تقرير القسم </a></li>
+                </ul>
+            </li>
 
                 {{-- <li><a class="ai-icon" href="{{ route('levels.index') }}" aria-expanded="false">
                         <i class="la la-building"></i>
