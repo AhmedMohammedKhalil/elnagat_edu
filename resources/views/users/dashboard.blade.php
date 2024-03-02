@@ -70,7 +70,7 @@
                     <div class="card-body">
                         <div class="media">
                             <span class="me-3">
-                                <img src="{{ asset('assets/images/data/icons/boss.png') }}" alt="">
+                                <img src="{{ asset('assets/images/data/icons/teams.png') }}" alt="">
                             </span>
                             <div class="media-body text-white">
                                 <p class="mb-1">عدد أعضاء فريق التشغيل</p>
@@ -85,7 +85,7 @@
                     <div class="card-body">
                         <div class="media">
                             <span class="me-3">
-                                <img src="{{ asset('assets/images/data/icons/boss.png') }}" alt="">
+                                <img src="{{ asset('assets/images/data/icons/stars.png') }}" alt="">
                             </span>
                             <div class="media-body text-white">
                                 <p class="mb-1">عدد التقييمات</p>

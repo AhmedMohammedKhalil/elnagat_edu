@@ -27,6 +27,9 @@ class Login extends Component
         $validatedData = $this->validate();
         if(Auth::attempt($validatedData)){
             session()->flash('message', "تم دخولك ينجاح");
+            if(auth()->user()->role == 'admin'){
+                return redirect()->route('dashboard');
+            }
             return redirect()->route('profile');
 
         }else{
