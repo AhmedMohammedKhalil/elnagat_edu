@@ -11,9 +11,9 @@
                             <span class="nav-text">لوحة التحكم</span>
                         </a>
                     </li>
-                    <li><a class="ai-icon" href="{{ route('weeks.index') }}" aria-expanded="false">
-                        <i class="las la-calendar-week"></i>
-                        <span class="nav-text">الأسابيع</span>
+                    <li><a class="ai-icon" href="{{ route('admin.schools') }}" aria-expanded="false">
+                            <i class="la la-school"></i>
+                            <span class="nav-text">المدارس</span>
                         </a>
                     </li>
                     <li><a class="ai-icon" href="{{ route('officials.index') }}" aria-expanded="false">
@@ -21,7 +21,11 @@
                             <span class="nav-text">الفريق التشغيلى</span>
                         </a>
                     </li>
-
+                    <li><a class="ai-icon" href="{{ route('weeks.index') }}" aria-expanded="false">
+                        <i class="las la-calendar-week"></i>
+                        <span class="nav-text">الأسابيع</span>
+                        </a>
+                    </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="la la-id-card-alt"></i>
                             <span class="nav-text">التقارير</span>
@@ -79,7 +83,6 @@
 
 
                 @endif
-            @else
             @else
                 <li><a class="ai-icon" href="{{ route('reviews.index') }}" aria-expanded="false">
                     <i class="las la-star-half-alt"></i>

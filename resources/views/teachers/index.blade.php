@@ -56,7 +56,7 @@
                                                         <td>
                                                             <a href="{{ route('levels.index',['id' => $teacher->id]) }}" title="المراحل التعليمية" class="btn btn-xs sharp btn-primary"><i class="fa fa-eye"></i></a>
                                                             <a href="{{ route('teachers.edit',['id' => $teacher->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
-                                                            @if(count($teacher->reviews) == 0)
+                                                            @if(count($teacher->levels) == 0)
                                                                 <form style="display:inline-block" action="{{route('teachers.destroy',['id'=>$teacher->id])}}" method="post">
                                                                     @csrf
                                                                     @method('delete')

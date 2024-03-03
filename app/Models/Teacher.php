@@ -13,6 +13,9 @@ class Teacher extends Model
         'name'
     ];
 
+    protected $appends = ['lessons','weeky_plan','tasks','notes'];
+
+
     public function department() {
         return $this->belongsTo(Department::class);
     }

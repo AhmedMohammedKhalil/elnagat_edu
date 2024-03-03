@@ -36,6 +36,15 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', 'OfficialController@destroy')->name('destroy');
         });
 
+        Route::prefix('admin')->name('admin.')->group(function () {
+            Route::get('/schools', 'AdminController@schools')->name('schools');
+            Route::get('/departments', 'AdminController@departments')->name('departments');
+            Route::get('/teachers', 'AdminController@teachers')->name('teachers');
+            Route::get('/levels', 'AdminController@levels')->name('levels');
+            Route::get('/classrooms', 'AdminController@classrooms')->name('classrooms');
+
+        });
+
         Route::prefix('weeks')->name('weeks.')->group(function () {
             Route::get('/', 'WeekController@index')->name('index');
             Route::get('/create', 'WeekController@create')->name('create');

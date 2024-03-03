@@ -2,38 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
+use App\Models\Department;
+use App\Models\Level;
 use App\Models\User;
+use App\Models\School;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function showLoginForm() {
-        return view('admins.login');
+    public function schools() {
+        $schools = School::all();
+        return view("admin.schools", compact("schools"));
     }
 
-    public function dashboard() {
-
-        $page_name = 'الإحصائيات';
-        $user_count = User::all()->count();
-        return view('admins.dashboard',compact('page_name','user_count'));
+    public function departments(Request $request) {
+        $departments = Department::where('school_id',$request->id)->get();
+        return view("admin.departments", compact("departments"));
     }
 
-    public function profile() {
-        return view('admins.profile',['page_name' => 'البروفايل']);
+    public function teachers(Request $request) {
+        $teachers = Teacher::where('department_id',$request->id)->get();
+        return view("admin.teachers", compact("teachers"));
     }
 
-    public function settings() {
-        return view('admins.settings',['page_name' => 'الإعدادات']);
+    public function levels(Request $request) {
+        $levels = Level::where('teacher_id',$request->id)->get();
+        return view("admin.levels", compact("levels"));
     }
 
-    public function changePassword() {
-        return view('admins.changePassword',['page_name' => 'تغيير كلمة السر']);
-    }
 
-    public function logout(Request $request) {
-        Auth::logout();
-        $request->session()->invalidate();
-        return redirect()->route('home');
+    public function classrooms(Request $request) {
+        $classrooms = Classroom::where('level_id',$request->id)->get();
+        return view("admin.classrooms", compact("classrooms"));
     }
 }

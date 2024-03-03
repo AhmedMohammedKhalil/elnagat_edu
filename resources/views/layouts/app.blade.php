@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Elnajat Eductaion') }}</title>
 
-    {{-- <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}"> --}}
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
