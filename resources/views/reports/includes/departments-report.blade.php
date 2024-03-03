@@ -210,14 +210,14 @@
               html2canvas: {
                     backgroundColor: "#fff",
                     scale: 1,
-                    dpi:96,
-                    // y: 0,
-                    // x: 0,
-                    // scrollY: 0,
-                    // scrollX: 0,
-                    // windowWidth: 1240,
+                    dpi:150,
+                    y: 0,
+                    x: 0,
+                    scrollY: 0,
+                    scrollX: 0,
+                    windowWidth: 1240,
                 },
-                jsPDF: { unit: 'in', format: 'a4'/*[1240, 1754]*/, orientation: 'portrait'}
+                jsPDF: { unit: 'px', format: [1240, 1754], orientation: 'portrait' }
 			  //html2canvas:  { scale: 2 },
 			  //jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
 			};
@@ -259,15 +259,15 @@
 			  image:        { type: 'jpeg', quality: 1 },
               html2canvas: {
                     backgroundColor: "#fff",
-                    scale: window.devicePixelRatio,
+                    scale: 1,
                     y: 0,
                     x: 0,
-                    dpi: 192,
+                    dpi: 150,
                     scrollY: 0,
                     scrollX: 0,
                     windowWidth: 1240,
                 },
-                jsPDF: { unit: 'px', format: [1240, 1754], orientation: 'portrait', precision: 32 }
+                jsPDF: { unit: 'px', format: [1240, 1754], orientation: 'portrait' }
 			  //html2canvas:  { scale: 2 },
 			  //jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
 			};
