@@ -180,7 +180,7 @@
 			  image:        { type: 'jpg', quality: 1 },
               html2canvas: {
                     backgroundColor: "#fff",
-                    scale: 2,
+                    scale: 1,
                     y: 0,
                     x: 0,
                     dpi: 150,
@@ -230,7 +230,7 @@
 			  image:        { type: 'jpeg', quality: 1 },
               html2canvas: {
                     backgroundColor: "#fff",
-                    scale: 2,
+                    scale: 1,
                     y: 0,
                     x: 0,
                     dpi: 150,
