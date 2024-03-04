@@ -27,4 +27,38 @@ class Teacher extends Model
     public function levels() {
         return $this->hasMany(Level::class);
     }
+
+    public function getLessonsAttribute(){
+        $sum = 0;
+        foreach($this->reviews as $review){
+            $sum += $review->lessons;
+        }
+        return $sum;
+    }
+
+    public function getWeekyPlanAttribute(){
+        $sum = 0;
+        foreach($this->reviews as $review){
+            $sum += $review->weekly_plan;
+        }
+        return $sum;
+    }
+
+    public function getTasksAttribute(){
+        $sum = 0;
+        foreach($this->reviews as $review){
+            $sum += $review->tasks;
+        }
+        return $sum;
+    }
+
+    public function getNotesAttribute(){
+        $notes = null;
+        foreach($this->reviews as $review){
+            if($review->notes){
+                $notes = "يوجد ملاحظات";
+            }
+        }
+        return $notes;
+    }
 }
