@@ -86,7 +86,7 @@
             @else
                 <li><a class="ai-icon" href="{{ route('reviews.index') }}" aria-expanded="false">
                     <i class="las la-star-half-alt"></i>
-                        <span class="nav-text">التقييمات</span>
+                        <span class="nav-text">المتابعات</span>
                     </a>
                 </li>
             @endif

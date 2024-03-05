@@ -7,7 +7,7 @@
         <div class="row page-titles mx-0" style="height: 200px">
             <div class="col-sm-12">
                 <div class="welcome-text text-center">
-                    <h4>التقييمات</h4>
+                    <h4>المتابعات</h4>
                 </div>
             </div>
         </div>
@@ -16,9 +16,9 @@
             @if($flag)
             <div class="col-lg-12">
                 <ul class="nav nav-pills mb-3">
-                    <li class="nav-item"><a href="#list-view" data-bs-toggle="tab" class="nav-link me-1 show active">عرض التقييمات</a></li>
+                    <li class="nav-item"><a href="#list-view" data-bs-toggle="tab" class="nav-link me-1 show active">عرض المتابعات</a></li>
                     @if($count != count($reviews))
-                        <li class="nav-item"><a href="#add-review" data-bs-toggle="tab" class="nav-link">إضافة تقييم جديد</a></li>
+                        <li class="nav-item"><a href="#add-review" data-bs-toggle="tab" class="nav-link">إضافة متابعة جديدة</a></li>
                     @endif
                 </ul>
             </div>
@@ -27,7 +27,7 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">جميع التقييمات</h4>
+                                <h4 class="card-title">جميع المتابعات</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -66,7 +66,7 @@
                                             @if(!$reviews)
                                                 <tr>
                                                     <td colspan="6">
-                                                        <h4 class="text-center">لا يوجد تقييمات</h4>
+                                                        <h4 class="text-center">لا يوجد متابعات</h4>
                                                     </td>
                                                 </tr>
                                             @endif
@@ -81,7 +81,7 @@
                         <div class="col-lg-12 col-sm-12 m-auto">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">أضف تقييم جديد</h4>
+                                    <h4 class="card-title">أضف متابعة جديدة</h4>
                                 </div>
                                 <div class="card-body">
                                     <livewire:review.review method='add' :week_id="$current_week->id" review_id='0'/>

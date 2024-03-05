@@ -1,3 +1,35 @@
+@push('css')
+    <style>
+
+
+        .review .row{
+            justify-content: center;
+            align-items: center
+        }
+        /* @media (min-width: 576px){
+            .review .col-sm-12 {
+                flex: 0 0 auto;
+                width: 90.999% !important;
+            }
+        } */
+        @media (min-width: 768px){
+            .review .col-lg-7 {
+                flex: 0 0 auto;
+                width: 55.55556% !important;
+            }
+
+            .review .col-lg-3 {
+                flex: 0 0 auto;
+                width: 22.22223% !important;
+            }
+        }
+
+
+
+
+    </style>
+@endpush
+
 <div style="">
     <div class="login-form">
         <form wire:submit.prevent='{{ $method }}'>
@@ -113,10 +145,35 @@
                 </div>
 
                 <div class="mx-auto" style="width:90%;background: #4eaf52;color:#044c71;text-align:center;vertical_aline:middle">
-                    <h3 style="height:70px;padding-top:30px"> بنود التقييم </h3>
+                    <h3 style="height:70px;padding-top:30px"> بنود المتابعة </h3>
                 </div>
+
                 <div class="col-sm-12 pt-5"></div>
-                <div class="col-sm-12 mx-auto row justify-content-center">
+
+                <div class="col-md-12 col-sm-12 review">
+                    <div class="form-group row">
+                        <label class="col-lg-3  col-sm-12" for="tasks">الواجبات المرفوعة</label>
+                        <input id="tasks" type="number" style="width: 90%" class="form-control col-lg-7  col-sm-12" wire:model:tasks>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 review">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-sm-12" for="lessons">الدروس المحضرة</label>
+                        <input id="lessons" type="number" style="width: 90%" class="form-control col-lg-7 col-sm-12" wire:model:lessons>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 review">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-sm-12" for="weekly_plan">الخطة الأسبوعية</label>
+                        <input id="weekly_plan" type="number" style="width: 90%" class="form-control col-lg-7 col-sm-12" wire:model:weekly_plan>
+                    </div>
+                </div>
+
+
+
+                {{-- <div class="col-sm-12 mx-auto row justify-content-center">
                     <div class="col-sm-3 mx-1 m-1" style="border-radius:20px; background:#044c71; color:white;text-align:center;vertical_aline:middle">
                         <h3 style="color:white !important;height:50px;padding-top:15px">م</h3>
                     </div>
@@ -182,7 +239,7 @@
                             <input id="result" min="0"  class="form-control mx-auto  text-center" wire:model="result">
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="mx-auto" style="width:90%;background: #4eaf52;color:#044c71;text-align:center;vertical_aline:middle">
                     <h3 style="height:70px;padding-top:30px"> الملاحظات </h3>
