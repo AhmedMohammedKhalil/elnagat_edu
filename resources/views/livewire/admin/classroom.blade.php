@@ -7,8 +7,8 @@
                 </div>
             @endif
                 <div class="form-group">
-                    <label for="name">الإسم</label>
-                    <input type="text" wire:model.lazy='name' id="name" class="form-control" placeholder="الإسم">
+                    <label for="name">الصف الدراسى</label>
+                    <input type="text" wire:model.lazy='name' id="name" class="form-control" placeholder="الصف الدراسى">
                     @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
                 </div>
                 @if($method != "add")

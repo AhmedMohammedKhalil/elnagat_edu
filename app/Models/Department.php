@@ -9,7 +9,6 @@ class Department extends Model
 {
     protected $table="departments";
     protected $fillable = [
-        'owner',
         'school_id',
         'name',
         'owner_id',

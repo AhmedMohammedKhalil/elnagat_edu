@@ -33,7 +33,7 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>الإسم</th>
+                                                <th>الصف الدراسى</th>
                                                 <th>المرحلة التعليمية</th>
                                                 <th>الإعدادات</th>
                                             </tr>
@@ -54,7 +54,7 @@
 
                                                         <td>
                                                             <a href="{{ route('classrooms.edit',['id' => $classroom->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
-                                                           
+
                                                                 <form style="display:inline-block" action="{{route('classrooms.destroy',['classroom_id'=>$classroom->id,'id'=>$level->id])}}" method="post">
                                                                     @csrf
                                                                     @method('delete')
@@ -62,7 +62,7 @@
                                                                         <i class='fa fa-trash'></i>
                                                                     </button>
                                                                 </form>
-                                                         
+
                                                         </td>
                                                     </tr>
                                             @endforeach

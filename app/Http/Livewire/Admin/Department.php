@@ -104,6 +104,8 @@ class Department extends Component
 
         $data_department = [
             'name' => $this->name,
+            'owner_id' => $this->owner_id,
+            'school_id' => $this->school_id
         ];
         $this->department->update($data_department);
         session()->flash('message', "Department Updated successful.");
