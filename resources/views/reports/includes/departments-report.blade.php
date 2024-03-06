@@ -55,7 +55,7 @@
                             <img src="{{ asset('assets/images/data/logo-1.png') }}" style="width: 150px;height:120px" alt="">
                         </td>
                         <td class="col5" colspan="5" style="padding-top: 20px">
-                            <h2>تقييم&nbsp;منصة&nbsp;{{ $school->name }} </h2>
+                            <h2>متابعة&nbsp;منصة&nbsp;{{ $school->name }} </h2>
                         </td>
                         <td class="col2" colspan="2">
                             <span><a class="btn_preview" ><i class="las la-eye" style="font-size:40px; color:#044c71"></i></a></span>
@@ -138,7 +138,7 @@
                                 <h4>{{ $teacher->weekly_plan }}</h4>
                             </td>
                             <td class="col3" colspan="3">
-                                <h4>{!! $teacher->notes ?? 'لا يوجد ملاحظات' !!}</h4>
+                                <h4 style="text-wrap:wrap">{!! $teacher->notes ?? 'لا يوجد ملاحظات' !!}</h4>
                             </td>
                         </tr>
                     @endforeach

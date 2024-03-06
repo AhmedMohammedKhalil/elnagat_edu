@@ -25,6 +25,7 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>الإسم</th>
+                                                <th>الإعدادات</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -34,12 +35,15 @@
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $classroom->name }}</td>
+                                                        <td>
+                                                            <a href="{{ route('admin.classrooms.edit',['id' => $classroom->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
+                                                        </td>
 
                                                     </tr>
                                             @endforeach
                                             @else
                                                 <tr>
-                                                    <td colspan="4">
+                                                    <td colspan="3">
                                                         <h4 class="text-center">لا يوجد صفوف دراسية</h4>
                                                     </td>
                                                 </tr>

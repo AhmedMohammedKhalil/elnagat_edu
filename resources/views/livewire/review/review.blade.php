@@ -53,7 +53,15 @@
                     </div>
                 </div>
 
+
                 <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="department">القسم</label>
+                        <input readonly id="department" type="text" class="form-control" value="{{ $department->name }}">
+                    </div>
+                </div>
+
+                {{-- <div class="col-md-6 col-sm-12">
                     <div class="form-group">
                         <label class="department_id">القسم</label>
                         <select class="form-control" wire:model='department_id' id="department_id" @if($method != 'add') disabled @endif>
@@ -70,7 +78,7 @@
                         </select>
                         @error('department_id') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
@@ -153,21 +161,28 @@
                 <div class="col-md-12 col-sm-12 review">
                     <div class="form-group row">
                         <label class="col-lg-3  col-sm-12" for="tasks">الواجبات المرفوعة</label>
-                        <input id="tasks" type="number" style="width: 90%" class="form-control col-lg-7  col-sm-12" wire:model:tasks>
+                        <input id="tasks" type="number" min="0" style="width: 90%" class="form-control col-lg-7  col-sm-12" wire:model="tasks">
                     </div>
                 </div>
 
                 <div class="col-md-12 col-sm-12 review">
                     <div class="form-group row">
                         <label class="col-lg-3 col-sm-12" for="lessons">الدروس المحضرة</label>
-                        <input id="lessons" type="number" style="width: 90%" class="form-control col-lg-7 col-sm-12" wire:model:lessons>
+                        <input id="lessons" type="number" min="0" style="width: 90%" class="form-control col-lg-7 col-sm-12" wire:model="lessons">
                     </div>
                 </div>
 
                 <div class="col-md-12 col-sm-12 review">
                     <div class="form-group row">
                         <label class="col-lg-3 col-sm-12" for="weekly_plan">الخطة الأسبوعية</label>
-                        <input id="weekly_plan" type="number" style="width: 90%" class="form-control col-lg-7 col-sm-12" wire:model:weekly_plan>
+                        <input id="weekly_plan" type="number" min="0" style="width: 90%" class="form-control col-lg-7 col-sm-12" wire:model="weekly_plan">
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 review">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-sm-12" for="result">الأجمالى</label>
+                        <input readonly id="result"  type="text"  style="width: 90%" class="form-control col-lg-7 col-sm-12" wire:model="result">
                     </div>
                 </div>
 

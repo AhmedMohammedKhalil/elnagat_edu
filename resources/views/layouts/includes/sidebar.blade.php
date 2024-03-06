@@ -3,7 +3,7 @@
         <ul class="metismenu" id="menu">
             <li class="nav-label first">القائمة الرئيسية</li>
 
-            @if(auth()->user()->role != 'sub_admin')
+            @if(auth()->user()->role != 'department-owner')
                 @if(auth()->user()->role == 'admin')
                     <li>
                         <a class="ai-icon" href="{{ route('dashboard') }}" aria-expanded="false">
@@ -37,12 +37,7 @@
                     </li>
 
 
-                @else
-                    {{-- <li><a class="ai-icon" href="{{ route('sub_admins.index') }}" aria-expanded="false">
-                            <i class="la la-user"></i>
-                            <span class="nav-text">المدراء المساعدين</span>
-                        </a>
-                    </li> --}}
+                @elseif(auth()->user()->role == 'official')
                     <li><a class="ai-icon" href="{{ route('schools.index') }}" aria-expanded="false">
                             <i class="la la-school"></i>
                             <span class="nav-text">المدارس</span>
@@ -68,22 +63,28 @@
                             <li><a href="{{ route('reports.official.departments') }}">تقرير القسم </a></li>
                         </ul>
                     </li>
-
-                    {{-- <li><a class="ai-icon" href="{{ route('levels.index') }}" aria-expanded="false">
-                            <i class="la la-building"></i>
-                            <span class="nav-text">المستويات</span>
+                @else
+                    <li><a class="ai-icon" href="{{ route('sub_admin.schools') }}" aria-expanded="false">
+                            <i class="la la-school"></i>
+                            <span class="nav-text">المدارس</span>
                         </a>
                     </li>
-
-                    <li><a class="ai-icon" href="#" aria-expanded="false">
-                            <i class="la la-building"></i>
-                            <span class="nav-text">الفصول</span>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="la la-id-card-alt"></i>
+                        <span class="nav-text">التقارير</span>
                         </a>
-                    </li> --}}
-
-
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('reports.sub_admin.schools') }}">تقرير المدرسة</a></li>
+                            <li><a href="{{ route('reports.sub_admin.departments') }}">تقرير القسم </a></li>
+                        </ul>
+                    </li>
                 @endif
             @else
+                <li><a class="ai-icon" href="{{ route('department-owner.departments') }}" aria-expanded="false">
+                        <i class="la la-building"></i>
+                        <span class="nav-text">الأقسام</span>
+                    </a>
+                </li>
                 <li><a class="ai-icon" href="{{ route('reviews.index') }}" aria-expanded="false">
                     <i class="las la-star-half-alt"></i>
                         <span class="nav-text">المتابعات</span>

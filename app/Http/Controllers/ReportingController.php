@@ -85,7 +85,7 @@ class ReportingController extends Controller
                     $teacher_tasks += $review->tasks;
                     $teacher_weekly_plan += $review->weekly_plan;
                     if($review->notes != null)
-                        $teacher_notes = "يوجد ملاحظات";
+                        $teacher_notes .= $review->classroom->name." - ".$review->notes."<br>";
                 }
                 $teacher->lessons = $teacher_lessons;
                 $teacher->tasks = $teacher_tasks;
@@ -175,18 +175,105 @@ class ReportingController extends Controller
                     $teacher_tasks += $review->tasks;
                     $teacher_weekly_plan += $review->weekly_plan;
                     if($review->notes != null)
-                        $teacher_notes = "يوجد ملاحظات";
+                        $teacher_notes .= $review->classroom->name." - ".$review->notes."<br>";
                 }
                 $teacher->lessons = $teacher_lessons;
                 $teacher->tasks = $teacher_tasks;
                 $teacher->weekly_plan = $teacher_weekly_plan;
                 $teacher->notes = $teacher_notes;
                 //$teacher->save();
-
-
             }
         $reviews = Review::whereIn('teacher_id',$ids)->where('week_id', $request->week_id)->get();
         $school=$department->school;
         return view("reports.showofficialdepartmentreport",compact('week','department','teachers','reviews','lessons','tasks','weekly_plan','school'));
+    }
+
+
+
+    public function subAdminSchoolReport()
+    {
+       $id = auth()->user()->school->id;
+       return redirect()->route('reports.sub_admin.school.data',['school_id'=>$id]);
+    }
+
+    public function getsubAdminSchoolReportData(Request $request)
+    {
+        $lessons = 0;
+        $tasks = 0;
+        $weekly_plan = 0;
+        $review_count = 0;
+        $teachers_count = 0;
+
+        $departments = ModelsDepartment::where('school_id', $request->school_id)->get();
+        $departments_count=$departments->count();
+        foreach ($departments as $department) {
+            // Increment teachers count for each department
+            $teachers_count += $department->teachers()->count();
+
+            $teachers = $department->teachers;
+
+            foreach ($teachers as $teacher) {
+                // Increment review count for each teacher
+                $reviews = $teacher->reviews;
+                $review_count += $reviews->count();
+
+                foreach ($reviews as $review) {
+                    // Accumulate lessons, tasks, and weekly plan
+                    $lessons += $review->lessons;
+                    $tasks += $review->tasks;
+                    $weekly_plan += $review->weekly_plan;
+                }
+            }
+        }
+        $school = School::whereId($request->school_id)->first();
+
+
+        return view("reports.showsubadminSchoolreport",compact('school','departments_count','teachers_count','review_count','lessons','tasks','weekly_plan'));
+    }
+
+    public function subAdminDepartmentReport(Request $request)
+    {
+        return view("reports.subadmindepartmentreport");
+    }
+
+
+    public function getsubAdminDepartmentReportData(Request $request)
+    {
+
+        $department = ModelsDepartment::find($request->department_id);
+        $week= Week::find($request->week_id);
+        $teachers = $department->teachers;
+        $lessons = 0;
+        $tasks = 0;
+        $weekly_plan = 0;
+        $ids = [];
+        foreach ($teachers as $teacher)
+            {
+                $teacher_lessons = 0;
+                $teacher_tasks = 0;
+                $teacher_weekly_plan = 0;
+                $teacher_notes = null;
+                $ids[] =$teacher->id;
+                $reviews = $teacher->reviews->where('week_id', $request->week_id);
+                foreach ($reviews as $review)
+                {
+                    $lessons += $review->lessons;
+                    $tasks += $review->tasks;
+                    $weekly_plan += $review->weekly_plan;
+                    $teacher_lessons += $review->lessons;
+                    $teacher_tasks += $review->tasks;
+                    $teacher_weekly_plan += $review->weekly_plan;
+                    if($review->notes != null)
+                        $teacher_notes .= $review->classroom->name." - ".$review->notes."<br>";
+                }
+                $teacher->lessons = $teacher_lessons;
+                $teacher->tasks = $teacher_tasks;
+                $teacher->weekly_plan = $teacher_weekly_plan;
+                $teacher->notes = $teacher_notes;
+                //$teacher->save();
+            }
+        $reviews = Review::whereIn('teacher_id',$ids)->where('week_id', $request->week_id)->get();
+        $school=$department->school;
+        return view("reports.showsubadmindepartmentreport",compact('week','department','teachers','reviews','lessons','tasks','weekly_plan','school'));
     }
 }

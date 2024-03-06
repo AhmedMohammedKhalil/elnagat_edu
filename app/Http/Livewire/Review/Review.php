@@ -15,15 +15,18 @@ use App\Models\Teacher as ModelsTeacher;
 class Review extends Component
 {
 
-    public $school_id,$school,$departments ,$department_id,$teachers,$teacher_id,$levels ,
+    public $school_id,$school,$department,$department_id,$teachers,$teacher_id,$levels ,
             $level_id,$classrooms,$classroom_id,$method,$review,
             $week,$week_id,$tasks,$lessons,$weekly_plan,$result,$date,$notes;
 
     public function mount($method,int $week_id = 0,?int $review_id) {
         Carbon::setLocale('ar');
         $this->method = $method;
-        $this->school = auth()->user()->school;
-        $this->departments = auth()->user()->school->departments;
+        $this->department = auth()->user()->department;
+        $this->school = $this->department->school;
+        $this->department_id = $this->department->id;
+        $this->updatedDepartmentID();
+
         if($this->method == 'add') {
             $this->week = $week_id > 0 ? Week::find( $week_id ) : null;
             $this->week_id = $this->week->id;
@@ -50,6 +53,7 @@ class Review extends Component
             $this->weekly_plan = $this->review->weekly_plan;
             $this->date = $this->review->date;
             $this->result = $this->review->result;
+            $this->notes = $this->review->notes;
         }
     }
 
@@ -104,7 +108,7 @@ class Review extends Component
         $this->classrooms = Classroom::where('level_id', $this->level_id)->get();
         $ids = [];
         foreach ($this->classrooms as $classroom) {
-            if(ModelsReview::where('classroom_id',$classroom->id)->first()) {
+            if(ModelsReview::where('classroom_id',$classroom->id)->where('week_id',$this->week_id)->first()) {
                 $ids[] = $classroom->id;
             }
         }

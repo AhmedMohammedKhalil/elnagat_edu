@@ -38,11 +38,18 @@ Route::middleware(['auth'])->group(function () {
 
         Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/schools', 'AdminController@schools')->name('schools');
-            Route::get('/departments', 'AdminController@departments')->name('departments');
-            Route::get('/teachers', 'AdminController@teachers')->name('teachers');
-            Route::get('/levels', 'AdminController@levels')->name('levels');
-            Route::get('/classrooms', 'AdminController@classrooms')->name('classrooms');
+            Route::get('/schools/edit', 'AdminController@editSchool')->name('schools.edit');
 
+            Route::get('/departments', 'AdminController@departments')->name('departments');
+            Route::get('/departments/edit', 'AdminController@editDepartment')->name('departments.edit');
+
+            Route::get('/teachers', 'AdminController@teachers')->name('teachers');
+            Route::get('/teachers/edit', 'AdminController@editTeacher')->name('teachers.edit');
+
+            Route::get('/levels', 'AdminController@levels')->name('levels');
+
+            Route::get('/classrooms', 'AdminController@classrooms')->name('classrooms');
+            Route::get('/classrooms/edit', 'AdminController@editClassroom')->name('classrooms.edit');
         });
 
         Route::prefix('weeks')->name('weeks.')->group(function () {
@@ -124,12 +131,49 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::middleware(['sub-admin'])->group(function () {
+
+        Route::prefix('reports')->name('reports.')->group(function () {
+            Route::get('/school', 'ReportingController@subAdminSchoolReport')->name('sub_admin.schools');
+            Route::get('/school/data', 'ReportingController@getsubAdminSchoolReportData')->name('sub_admin.school.data');
+            Route::get('/department', 'ReportingController@subAdminDepartmentReport')->name('sub_admin.departments');
+            Route::get('/department/data', 'ReportingController@getsubAdminDepartmentReportData')->name('sub_admin.department.data');
+
+        });
+
+        Route::prefix('sub_admin')->name('sub_admin.')->group(function () {
+            Route::get('/schools', 'SubAdminController@schools')->name('schools');
+            Route::get('/departments', 'SubAdminController@departments')->name('departments');
+            Route::get('/teachers', 'SubAdminController@teachers')->name('teachers');
+            Route::get('/levels', 'SubAdminController@levels')->name('levels');
+            Route::get('/classrooms', 'SubAdminController@classrooms')->name('classrooms');
+        });
+
+        // Route::middleware(['check-weeks'])->prefix('reviews')->name('reviews.')->group(function () {
+        //     Route::get('/', 'ReviewController@index')->name('index');
+        //     Route::get('/create', 'ReviewController@create')->name('create');
+        //     Route::get('/edit', 'ReviewController@edit')->name('edit');
+        //     Route::get('/show', 'ReviewController@show')->name('show');
+        //     Route::delete('/delete', 'ReviewController@destroy')->name('destroy');
+        // });
+    });
+
+
+    Route::middleware(['department-owner'])->group(function () {
+
         Route::middleware(['check-weeks'])->prefix('reviews')->name('reviews.')->group(function () {
             Route::get('/', 'ReviewController@index')->name('index');
             Route::get('/create', 'ReviewController@create')->name('create');
             Route::get('/edit', 'ReviewController@edit')->name('edit');
             Route::get('/show', 'ReviewController@show')->name('show');
             Route::delete('/delete', 'ReviewController@destroy')->name('destroy');
+        });
+
+
+        Route::prefix('department_owner')->name('department-owner.')->group(function () {
+            Route::get('/departments', 'DepartmentOwnerController@departments')->name('departments');
+            Route::get('/teachers', 'DepartmentOwnerController@teachers')->name('teachers');
+            Route::get('/levels', 'DepartmentOwnerController@levels')->name('levels');
+            Route::get('/classrooms', 'DepartmentOwnerController@classrooms')->name('classrooms');
         });
     });
 

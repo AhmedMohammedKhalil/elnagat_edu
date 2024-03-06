@@ -18,6 +18,15 @@
                         @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
 
+                    <div class="form-group">
+                        <label class="gender">النوع</label>
+                        <select class="form-control" wire:model.lazy='gender' id="gender">
+                            <option value="ذكر" @if($gender == 'ذكر') selected @endif>ذكر</option>
+                            <option value="أنثى" @if($gender == 'أنثى') selected @endif>أنثى</option>
+                        </select>
+                        @error('gender') <span class="text-danger error">{{ $message }}</span>@enderror
+                    </div>
+
                     <button type="submit" class="btn btn-primary d-block m-auto">حفظ التغييرات</button>
             </form>
         </div>

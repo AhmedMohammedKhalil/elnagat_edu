@@ -19,23 +19,7 @@ class SubAdmin extends Middleware
         if (auth()->check() && auth()->user()->role != "sub_admin") {
             return redirect()->route("profile");
         }
-        // if ($request->is('admin') || $request->is('admin/*')) {
-        //     if (auth()->check() && auth()->user()->role === 'admin')
-        //         return $next($request);
-        //     return redirect('/');
-        // }
 
-        // if ($request->is('official') || $request->is('official/*')) {
-        //     if (auth()->check() && auth()->user()->role === 'official')
-        //         return $next($request);
-        //     return redirect('/');
-        // }
-
-        // if ($request->is('sub_admin') || $request->is('sub_admin/*')) {
-        //     if (auth()->check() && auth()->user()->role === 'sub_admin')
-        //         return $next($request);
-        //     return redirect('/');
-        // }
         return $next($request);
     }
 }

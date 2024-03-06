@@ -25,8 +25,8 @@ class ReviewController extends Controller
         $reviews = $current_week != null ? $current_week->reviews : "";
         $flag = false;
         if(count($reviews) == 0) {
-            foreach (auth()->user()->school->departments as $department) {
-                foreach ($department->teachers as $teacher) {
+
+                foreach (auth()->user()->department->teachers as $teacher) {
                     foreach ($teacher->levels as $level) {
                         if(count($level->classrooms) > 0) {
                             $flag  = true;
@@ -37,26 +37,20 @@ class ReviewController extends Controller
                         break;
                     }
                 }
-                if($flag) {
-                    break;
-                }
-            }
 
         } else {
             $flag = true;
         }
 
         $count = 0;
-        foreach (auth()->user()->school->departments as $department) {
-            foreach ($department->teachers as $teacher) {
-                foreach ($teacher->levels as $level) {
-                    if(count($level->classrooms) > 0) {
-                        $count  += count($level->classrooms);
-                    }
+
+        foreach (auth()->user()->department->teachers as $teacher) {
+            foreach ($teacher->levels as $level) {
+                if(count($level->classrooms) > 0) {
+                    $count  += count($level->classrooms);
                 }
             }
         }
-
         return view("reviews.index", compact("reviews","current_week","flag",'count'));
     }
 
@@ -69,13 +63,6 @@ class ReviewController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(Request $request)
-    {
-        return view("reviews.create");
-    }
 
 
     /**

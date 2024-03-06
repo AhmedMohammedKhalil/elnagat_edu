@@ -56,7 +56,7 @@ class Teacher extends Model
         $notes = null;
         foreach($this->reviews as $review){
             if($review->notes){
-                $notes = "يوجد ملاحظات";
+                $notes .= $review->classroom->name." - ".$review->notes."<br>";
             }
         }
         return $notes;

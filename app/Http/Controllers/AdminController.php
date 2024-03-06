@@ -18,14 +18,32 @@ class AdminController extends Controller
         return view("admin.schools", compact("schools"));
     }
 
+    public function editSchool(Request $request)
+    {
+        $school_id = $request->id;
+        return view("admin.school_edit", compact("school_id"));
+    }
+
     public function departments(Request $request) {
         $departments = Department::where('school_id',$request->id)->get();
         return view("admin.departments", compact("departments"));
     }
 
+    public function editDepartment(Request $request)
+    {
+        $department_id = $request->id;
+        return view("admin.department_edit", compact("department_id"));
+    }
+
     public function teachers(Request $request) {
         $teachers = Teacher::where('department_id',$request->id)->get();
         return view("admin.teachers", compact("teachers"));
+    }
+
+    public function editTeacher(Request $request)
+    {
+        $teacher_id = $request->id;
+        return view("admin.teacher_edit", compact("teacher_id"));
     }
 
     public function levels(Request $request) {
@@ -38,4 +56,11 @@ class AdminController extends Controller
         $classrooms = Classroom::where('level_id',$request->id)->get();
         return view("admin.classrooms", compact("classrooms"));
     }
+
+    public function editClassroom(Request $request)
+    {
+        $classroom_id = $request->id;
+        return view("admin.classroom_edit", compact("classroom_id"));
+    }
+
 }

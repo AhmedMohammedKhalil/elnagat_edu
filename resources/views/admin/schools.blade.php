@@ -39,6 +39,8 @@
                                                             <td>{!! isset($school->departments) ? count($school->departments) : 0 !!}</td>
                                                             <td>
                                                                 <a href="{{ route('admin.departments',['id' => $school->id]) }}" title="عرض الأقسام" class="btn btn-xs sharp btn-primary"><i class="fa fa-eye"></i></a>
+                                                                <a href="{{ route('admin.schools.edit',['id' => $school->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
+
                                                             </td>
                                                         </tr>
                                                     @endforeach

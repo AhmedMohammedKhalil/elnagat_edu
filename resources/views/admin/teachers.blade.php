@@ -42,6 +42,8 @@
 
                                                         <td>
                                                             <a href="{{ route('admin.levels',['id' => $teacher->id]) }}" title="المراحل التعليمية" class="btn btn-xs sharp btn-primary"><i class="fa fa-eye"></i></a>
+                                                            <a href="{{ route('admin.teachers.edit',['id' => $teacher->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
+
                                                         </td>
                                                     </tr>
                                                 @endforeach

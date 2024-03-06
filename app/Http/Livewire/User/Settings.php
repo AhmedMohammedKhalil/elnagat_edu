@@ -50,13 +50,6 @@ class Settings extends Component
         User::whereId($this->user_id)->update($validatedata);
         session()->flash('message', "Your Profile Updated.");
         return redirect()->route('profile');
-        // if(auth()->user()->role == "admin"){
-        //     return redirect()->route('admin.profile');
-        // } elseif(auth()->user()->role == "official"){
-        //     return redirect()->route('official.profile');
-        // }else {
-        //     return redirect()->route('sub_admin.profile');
-        // }
     }
 
     public function render()

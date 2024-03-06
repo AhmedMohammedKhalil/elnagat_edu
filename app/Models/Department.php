@@ -11,7 +11,8 @@ class Department extends Model
     protected $fillable = [
         'owner',
         'school_id',
-        'name'
+        'name',
+        'owner_id',
     ];
 
     public function school() {
@@ -20,6 +21,10 @@ class Department extends Model
 
     public function teachers() {
         return $this->hasMany(Teacher::class);
+    }
+
+    public function department_owner() {
+        return $this->belongsTo(User::class,'owner_id');
     }
 
 }

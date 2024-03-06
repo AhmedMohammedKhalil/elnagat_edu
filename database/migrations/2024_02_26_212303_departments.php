@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('owner');
             $table->integer('school_id')->unsigned();
             $table->foreign('school_id')
                 ->references('id')->on('schools')
+                ->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('owner_id')->unsigned();
+            $table->foreign('owner_id')
+                ->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

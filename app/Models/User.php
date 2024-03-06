@@ -43,4 +43,8 @@ class User extends Authenticatable
     public function owner() {
         return $this->hasOne(School::class,'official_id');
     }
+
+    public function department() {
+        return $this->hasOne(Department::class,'owner_id');
+    }
 }

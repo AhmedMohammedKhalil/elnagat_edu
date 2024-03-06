@@ -34,10 +34,11 @@
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $department->name }}</td>
-                                                        <td>{{ $department->owner }}</td>
+                                                        <td>{{ $department->department_owner->name }}</td>
                                                         <td>{!! isset($department->teachers) ? count($department->teachers) : 0 !!}</td>
                                                         <td>
                                                             <a href="{{ route('admin.teachers',['id' => $department->id]) }}" title="عرض المعلمين" class="btn btn-xs sharp btn-primary"><i class="fa fa-eye"></i></a>
+                                                            <a href="{{ route('admin.departments.edit',['id' => $department->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

@@ -2,31 +2,43 @@
 
 namespace App\Http\Livewire\Department;
 
-use Livewire\Component;
-use App\Models\Department as ModelsDepartment;
+use App\Models\User;
 use App\Models\School;
+use Livewire\Component;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Department as ModelsDepartment;
 
 class Department extends Component
 {
 
-    public $name, $owner, $school_id,$method,$department;
+    public $name, $owner,$role, $school_id,$method,$department,$owner_id,$user,$email,$username,$gender,$password,$confirm_password;
 
     public function mount($method,?int $department_id) {
         $this->method = $method;
         $this->school_id = auth()->user()->owner->id;
+        $this->gender = 'ذكر';
+        $this->role = 'department_owner';
         //$this->school_id = (isset($school_id) && $school_id != null) ? $school_id : $this->school_id;
         if($this->method == 'edit') {
             $this->department = ModelsDepartment::whereId($department_id)->first();
             $this->school_id = $this->department->school_id;
             $this->name = $this->department->name;
-            $this->owner = $this->department->owner;
+            //$this->owner = $this->department->owner;
+            $this->owner_id = $this->department->owner_id;
+            $this->user = User::whereId($this->owner_id)->first();
+            $this->email = $this->user->email;
+            $this->username = $this->user->name;
+            $this->gender = $this->user->gender;
+
         }
     }
 
     protected $rules = [
         'name' => ['required', 'string', 'max:50'],
-        'owner'   => 'required|string',
-        'school_id' => ['required']
+        'school_id' => ['required'],
+        'username' => ['required', 'string', 'max:50'],
+        'role' => ['required', 'string'],
+        'gender' => ['required', 'string'],
     ];
 
     protected $messages = [
@@ -43,17 +55,92 @@ class Department extends Component
         'max' => 'لابد ان يكون الحقل مكون على الاكثر من 255 خانة',
     ];
 
+
+    public function updatedPassword() {
+        $validatedData = $this->validate(
+            [
+                'password' => ['required', 'string', 'min:4'],
+                'confirm_password' => ['required', 'string', 'min:4','same:password'],
+            ],
+        );
+    }
+
+    public function updatedConfirmPassword() {
+        $validatedData = $this->validate(
+            [
+                'password' => ['required', 'string', 'min:4'],
+                'confirm_password' => ['required', 'string', 'min:4','same:password'],
+            ],
+        );
+    }
+
+
+
+
     public function add() {
-        $validatedData = $this->validate();
-        ModelsDepartment::create($validatedData);
+        $validatedData = $this->validate(
+            array_merge(
+                $this->rules,
+                [
+                    'email'   => ['required','email',"unique:users,email"],
+                    'password' => ['required', 'string', 'min:4'],
+                    'confirm_password' => ['required', 'string', 'min:4','same:password'],
+                ],
+        ));
+        $data_user = [
+            'name' => $this->username,
+            'email' => $this->email,
+            'role' => $this->role,
+            'gender' => $this->gender,
+            'password' => Hash::make($this->password)
+        ];
+        $user = User::create($data_user);
+        $this->owner_id = $user->id;
+        $data_department = [
+            'name' => $this->name,
+            'owner_id' => $this->owner_id,
+            'school_id' => $this->school_id
+        ];
+        ModelsDepartment::create($data_department);
         session()->flash('message', "Department Added successful.");
         return redirect()->route('departments.index');
     }
 
-
     public function edit() {
-        $validatedData = $this->validate();
-        $this->department->update($validatedData);
+        $data = [];
+        if(!$this->password || $this->password == '' || $this->password == null) {
+            $validateData = $this->validate(
+                array_merge(
+                    $this->rules,
+                    [ 'email'   => ['required','email',"unique:users,email,".$this->user->id],
+            ]));
+            $data = [
+                'name' => $this->username,
+                'email' => $this->email,
+                'gender'=> $this->gender
+            ];
+        } else {
+            $this->updatedPassword();
+            $validateData = $this->validate(
+                array_merge(
+                    $this->rules,
+                    [
+                         'email'   => ['required','email',"unique:users,email,".$this->user->id],
+                    ])
+            );
+            $data = [
+                'name' => $this->username,
+                'email' => $this->email,
+                'gender'=> $this->gender,
+                'password' => Hash::make($this->password)
+            ];
+        }
+        User::whereId($this->user->id)->update($data);
+
+        $data_department = [
+            'name' => $this->name,
+        ];
+        $this->department->update($data_department);
         session()->flash('message', "Department Updated successful.");
         return redirect()->route('departments.index');
     }
