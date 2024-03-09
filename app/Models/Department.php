@@ -62,7 +62,7 @@ class Department extends Model
             foreach($this->teachers as $teacher){
                 $sum = 0;
                 foreach($teacher->reviews as $review){
-                    $sum += number_format($review->result);
+                    $sum += (int) $review->result;
                 }
                 if(count($teacher->reviews) > 0){
                     $count++;
@@ -70,7 +70,8 @@ class Department extends Model
                 }
 
             }
-            $result = round($result / $count);
+            if($count > 0)
+                $result = round($result / $count);
         }
         return $result;
     }
