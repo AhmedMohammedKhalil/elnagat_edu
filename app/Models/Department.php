@@ -14,6 +14,9 @@ class Department extends Model
         'owner_id',
     ];
 
+    protected $appends = ['lessons','weekly_plan','tasks','results'];
+
+
     public function school() {
         return $this->belongsTo(School::class);
     }
@@ -24,6 +27,52 @@ class Department extends Model
 
     public function department_owner() {
         return $this->belongsTo(User::class,'owner_id');
+    }
+
+
+    public function getLessonsAttribute(){
+        $sum = 0;
+        foreach($this->teachers as $teacher){
+            $sum += $teacher->lessons;
+        }
+        return $sum;
+    }
+
+    public function getWeeklyPlanAttribute(){
+        $sum = 0;
+        foreach($this->teachers as $teacher){
+            $sum += $teacher->weekly_plan;
+        }
+        return $sum;
+    }
+
+    public function getTasksAttribute(){
+        $sum = 0;
+        foreach($this->teachers as $teacher){
+            $sum += $teacher->tasks;
+        }
+        return $sum;
+    }
+
+    public function getResultsAttribute(){
+        $count = 0;
+        $result = 0;
+        if(count($this->teachers) > 0){
+
+            foreach($this->teachers as $teacher){
+                $sum = 0;
+                foreach($teacher->reviews as $review){
+                    $sum += number_format($review->result);
+                }
+                if(count($teacher->reviews) > 0){
+                    $count++;
+                    $result += $sum / count($teacher->reviews);
+                }
+
+            }
+            $result = round($result / $count);
+        }
+        return $result;
     }
 
 }

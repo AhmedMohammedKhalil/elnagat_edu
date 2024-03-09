@@ -13,7 +13,7 @@ class Teacher extends Model
         'name'
     ];
 
-    protected $appends = ['lessons','weeky_plan','tasks','notes'];
+    protected $appends = ['lessons','weekly_plan','tasks','notes'];
 
 
     public function department() {
@@ -36,7 +36,7 @@ class Teacher extends Model
         return $sum;
     }
 
-    public function getWeekyPlanAttribute(){
+    public function getWeeklyPlanAttribute(){
         $sum = 0;
         foreach($this->reviews as $review){
             $sum += $review->weekly_plan;

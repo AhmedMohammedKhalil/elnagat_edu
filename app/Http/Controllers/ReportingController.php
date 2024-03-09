@@ -29,28 +29,28 @@ class ReportingController extends Controller
 
         $departments = ModelsDepartment::where('school_id', $request->school_id)->get();
         $departments_count=$departments->count();
-        foreach ($departments as $department) {
-            // Increment teachers count for each department
-            $teachers_count += $department->teachers()->count();
+        // foreach ($departments as $department) {
+        //     // Increment teachers count for each department
+        //     $teachers_count += $department->teachers()->count();
 
-            $teachers = $department->teachers;
+        //     $teachers = $department->teachers;
 
-            foreach ($teachers as $teacher) {
-                // Increment review count for each teacher
-                $reviews = $teacher->reviews;
-                $review_count += $reviews->count();
+        //     foreach ($teachers as $teacher) {
+        //         // Increment review count for each teacher
+        //         $reviews = $teacher->reviews;
+        //         $review_count += $reviews->count();
 
-                foreach ($reviews as $review) {
-                    // Accumulate lessons, tasks, and weekly plan
-                    $lessons += $review->lessons;
-                    $tasks += $review->tasks;
-                    $weekly_plan += $review->weekly_plan;
-                }
-            }
-        }
+        //         foreach ($reviews as $review) {
+        //             // Accumulate lessons, tasks, and weekly plan
+        //             $lessons += $review->lessons;
+        //             $tasks += $review->tasks;
+        //             $weekly_plan += $review->weekly_plan;
+        //         }
+        //     }
+        // }
         $school = School::where('id', $request->school_id)->first();
 
-        return view("reports.showSchoolreport",compact('school','departments_count','teachers_count','review_count','lessons','tasks','weekly_plan'));
+        return view("reports.showSchoolreport",compact('school','departments_count','departments'));
     }
 
     public function departmentReport(Request $request)
@@ -117,29 +117,29 @@ class ReportingController extends Controller
 
         $departments = ModelsDepartment::where('school_id', $request->school_id)->get();
         $departments_count=$departments->count();
-        foreach ($departments as $department) {
-            // Increment teachers count for each department
-            $teachers_count += $department->teachers()->count();
+        // foreach ($departments as $department) {
+        //     // Increment teachers count for each department
+        //     $teachers_count += $department->teachers()->count();
 
-            $teachers = $department->teachers;
+        //     $teachers = $department->teachers;
 
-            foreach ($teachers as $teacher) {
-                // Increment review count for each teacher
-                $reviews = $teacher->reviews;
-                $review_count += $reviews->count();
+        //     foreach ($teachers as $teacher) {
+        //         // Increment review count for each teacher
+        //         $reviews = $teacher->reviews;
+        //         $review_count += $reviews->count();
 
-                foreach ($reviews as $review) {
-                    // Accumulate lessons, tasks, and weekly plan
-                    $lessons += $review->lessons;
-                    $tasks += $review->tasks;
-                    $weekly_plan += $review->weekly_plan;
-                }
-            }
-        }
+        //         foreach ($reviews as $review) {
+        //             // Accumulate lessons, tasks, and weekly plan
+        //             $lessons += $review->lessons;
+        //             $tasks += $review->tasks;
+        //             $weekly_plan += $review->weekly_plan;
+        //         }
+        //     }
+        // }
         $school = School::whereId($request->school_id)->first();
 
 
-        return view("reports.showofficialSchoolreport",compact('school','departments_count','teachers_count','review_count','lessons','tasks','weekly_plan'));
+        return view("reports.showofficialSchoolreport",compact('school','departments_count','departments'));
     }
 
     public function officialDepartmentReport(Request $request)
@@ -206,29 +206,29 @@ class ReportingController extends Controller
 
         $departments = ModelsDepartment::where('school_id', $request->school_id)->get();
         $departments_count=$departments->count();
-        foreach ($departments as $department) {
-            // Increment teachers count for each department
-            $teachers_count += $department->teachers()->count();
+        // foreach ($departments as $department) {
+        //     // Increment teachers count for each department
+        //     $teachers_count += $department->teachers()->count();
 
-            $teachers = $department->teachers;
+        //     $teachers = $department->teachers;
 
-            foreach ($teachers as $teacher) {
-                // Increment review count for each teacher
-                $reviews = $teacher->reviews;
-                $review_count += $reviews->count();
+        //     foreach ($teachers as $teacher) {
+        //         // Increment review count for each teacher
+        //         $reviews = $teacher->reviews;
+        //         $review_count += $reviews->count();
 
-                foreach ($reviews as $review) {
-                    // Accumulate lessons, tasks, and weekly plan
-                    $lessons += $review->lessons;
-                    $tasks += $review->tasks;
-                    $weekly_plan += $review->weekly_plan;
-                }
-            }
-        }
+        //         foreach ($reviews as $review) {
+        //             // Accumulate lessons, tasks, and weekly plan
+        //             $lessons += $review->lessons;
+        //             $tasks += $review->tasks;
+        //             $weekly_plan += $review->weekly_plan;
+        //         }
+        //     }
+        // }
         $school = School::whereId($request->school_id)->first();
 
 
-        return view("reports.showsubadminSchoolreport",compact('school','departments_count','teachers_count','review_count','lessons','tasks','weekly_plan'));
+        return view("reports.showsubadminSchoolreport",compact('school','departments_count','departments'));
     }
 
     public function subAdminDepartmentReport(Request $request)

@@ -63,83 +63,67 @@
                         </td>
                     </tr>
 
-                    {{-- start table data header --}}
-                    <tr class="table-header">
-                        <td class="col8" colspan="8">
-                            <h3>إسم&nbsp;التقييم</h3>
-                        </td>
-                        <td class="col4" colspan="4">
-                            <h3>العدد</h3>
-                        </td>
-                    </tr>
-
                     <tr>
-                        <td class="col8" colspan="8">
-                            <h3>الأقسام</h3>
-                        </td>
                         <td class="col4" colspan="4">
+                            <h3>عدد الأقسام</h3>
+                        </td>
+                        <td class="col4" colspan="2">
                             <h3>{{ $departments_count }}</h3>
                         </td>
+                        <td class="col6" colspan="6">
+                        </td>
                     </tr>
 
-                    <tr>
-                        <td class="col8" colspan="8">
+                    {{-- start table data header --}}
+                    <tr class="table-header">
+                        <td class="col2" colspan="2">
+                            <h3>القسم</h3>
+                        </td>
+                        <td class="col2" colspan="2">
                             <h3>المعلمين</h3>
                         </td>
-                        <td class="col4" colspan="4">
-                            <h3>{{ $teachers_count }}</h3>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="col8" colspan="8">
-                            <h3>التقييمات</h3>
-                        </td>
-                        <td class="col4" colspan="4">
-                            <h3>{{ $review_count }}</h3>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td class="col8" colspan="8">
+                        <td class="col2" colspan="2">
                             <h3>الواجبات&nbsp;المرفوعة</h3>
                         </td>
-                        <td class="col4" colspan="4">
-                            <h3>{{ $tasks }}</h3>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td class="col8" colspan="8">
+                        <td class="col2" colspan="2">
                             <h3>الدروس&nbsp;المحضرة</h3>
                         </td>
-                        <td class="col4" colspan="4">
-                            <h3>{{ $lessons }}</h3>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="col8" colspan="8">
+                        <td class="col2" colspan="2">
                             <h3>الخطة&nbsp;الأسبوعية</h3>
                         </td>
-                        <td class="col4" colspan="4">
-                            <h3>{{ $weekly_plan }}</h3>
+                        <td class="col2" colspan="2">
+                            <h3>التقييم الإجمالى</h3>
                         </td>
                     </tr>
+                    {{-- body --}}
+                    @foreach ($departments as $department)
+                        <tr>
+                            <td class="col2" colspan="2">
+                                <h4>{{ $department->name }}</h4>
+                            </td>
+                            <td class="col2" colspan="2">
+                                <h4>{{ count($department->teachers) }}</h4>
+                            </td>
+                            <td class="col2" colspan="2">
+                                <h4>{{ $department->tasks }}</h4>
+                            </td>
+                            <td class="col2" colspan="2">
+                                <h4>{{ $department->lessons }}</h4>
+                            </td>
+                            <td class="col2" colspan="2">
+                                <h4>{{ $department->weekly_plan }}</h4>
+                            </td>
+                            <td class="col2" colspan="2">
+                                <h4>{{ $department->results }}</h4>
+                            </td>
+                        </tr>
+                    @endforeach
 
                     <tr>
-                        <td class="col6" colspan="6">
+                        <td class="col12" colspan="12">
                             <div style="padding-top:20px">
                                 <h4>المدير&nbsp;المساعد</h4>
                                 <p>{{ $school->sub_admin->name }}</p>
-                            </div>
-                        </td>
-                        <td class="col6" colspan="6">
-                            <div style="padding-top:20px">
-                                <h4>مدير&nbsp;المدرسة</h4>
-                                <p>{{ $school->owner }}</p>
                             </div>
                         </td>
                     </tr>

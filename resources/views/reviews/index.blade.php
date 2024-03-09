@@ -50,7 +50,7 @@
                                                     <td>{{ $review->teacher->name }}</td>
                                                     <td>{{ $review->classroom->level->name }}</td>
                                                     <td>{{ $review->classroom->name }}</td>
-                                                    <td>{{ $review->result }}</td>
+                                                    <td>{{ $review->result." %" }}</td>
                                                     <td>
                                                         <a href="{{ route('reviews.edit',['id' => $review->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
                                                         <form style="display:inline-block" action="{{route('reviews.destroy',['id'=>$review->id])}}" method="post">

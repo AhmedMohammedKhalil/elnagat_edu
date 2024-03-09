@@ -136,7 +136,7 @@ class Review extends Component
 
         $result = $result / 3;
         $this->result = $result > 1 ? 100 : $result * 100 ;
-        $this->result = round($this->result)."%";
+        $this->result = round($this->result);
     }
 
     public function updatedTasks() {
