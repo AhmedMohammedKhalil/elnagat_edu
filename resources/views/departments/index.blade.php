@@ -35,6 +35,7 @@
                                                     <th>#</th>
                                                     <th>الإسم</th>
                                                     <th>رئيس القسم</th>
+                                                    <th>البريد الألكترونى</th>
                                                     <th>المدرسة</th>
                                                     <th>الإعدادات</th>
                                                 </tr>
@@ -45,6 +46,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $department->name }}</td>
                                                         <td>{{ $department->department_owner->name }}</td>
+                                                        <td>{{ $department->department_owner->email }}</td>
                                                         <td>{{ $department->school->name }}</td>
                                                         <td>
                                                             <a href="{{ route('departments.edit',['id' => $department->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
@@ -62,7 +64,7 @@
                                                 @endforeach
                                                 @if(count($departments) == 0)
                                                     <tr>
-                                                        <td colspan="5">
+                                                        <td colspan="6">
                                                             <h4 class="text-center">لا يوجد أقسام </h4>
                                                         </td>
                                                     </tr>

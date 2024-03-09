@@ -22,7 +22,14 @@ class ReviewController extends Controller
                 break;
             }
         }
-        $reviews = $current_week != null ? $current_week->reviews : "";
+        $reviews_result = $current_week != null ? $current_week->reviews : "";
+        $ids = [];
+        if ($reviews_result != "") {
+            foreach (auth()->user()->department->teachers as $teacher) {
+                $ids[] = $teacher->id;
+            }
+        }
+        $reviews = Review::where("week_id", $current_week->id)->WhereIn('teacher_id',$ids)->get();
         $flag = false;
         if(count($reviews) == 0) {
 

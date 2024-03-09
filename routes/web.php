@@ -60,10 +60,10 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/delete', 'WeekController@destroy')->name('destroy');
         });
         Route::prefix('reports')->name('reports.')->group(function () {
-            Route::get('/schools', 'ReportingController@schoolReport')->name('schools');
-            Route::get('/schools/data', 'ReportingController@getSchoolReportData')->name('school.data');
-            Route::get('/departments', 'ReportingController@departmentReport')->name('departments');
-            Route::get('/departments/data', 'ReportingController@getDepartmentReportData')->name('department.data');
+            Route::get('/admin/schools', 'ReportingController@schoolReport')->name('schools');
+            Route::get('/admin/schools/data', 'ReportingController@getSchoolReportData')->name('school.data');
+            Route::get('/admin/departments', 'ReportingController@departmentReport')->name('departments');
+            Route::get('/admin/departments/data', 'ReportingController@getDepartmentReportData')->name('department.data');
         });
     });
 
@@ -120,10 +120,10 @@ Route::middleware(['auth'])->group(function () {
         });
 
         Route::prefix('reports')->name('reports.')->group(function () {
-            Route::get('/school', 'ReportingController@officialSchoolReport')->name('official.schools');
-            Route::get('/school/data', 'ReportingController@getOfficialSchoolReportData')->name('official.school.data');
-            Route::get('/department', 'ReportingController@officialDepartmentReport')->name('official.departments');
-            Route::get('/department/data', 'ReportingController@getOfficialDepartmentReportData')->name('official.department.data');
+            Route::get('/official/school', 'ReportingController@officialSchoolReport')->name('official.schools');
+            Route::get('/official/school/data', 'ReportingController@getOfficialSchoolReportData')->name('official.school.data');
+            Route::get('/official/department', 'ReportingController@officialDepartmentReport')->name('official.departments');
+            Route::get('/official/department/data', 'ReportingController@getOfficialDepartmentReportData')->name('official.department.data');
 
         });
 
@@ -133,10 +133,10 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['sub-admin'])->group(function () {
 
         Route::prefix('reports')->name('reports.')->group(function () {
-            Route::get('/school', 'ReportingController@subAdminSchoolReport')->name('sub_admin.schools');
-            Route::get('/school/data', 'ReportingController@getsubAdminSchoolReportData')->name('sub_admin.school.data');
-            Route::get('/department', 'ReportingController@subAdminDepartmentReport')->name('sub_admin.departments');
-            Route::get('/department/data', 'ReportingController@getsubAdminDepartmentReportData')->name('sub_admin.department.data');
+            Route::get('/sub_admin/school', 'ReportingController@subAdminSchoolReport')->name('sub_admin.schools');
+            Route::get('/sub_admin/school/data', 'ReportingController@getsubAdminSchoolReportData')->name('sub_admin.school.data');
+            Route::get('/sub_admin/department', 'ReportingController@subAdminDepartmentReport')->name('sub_admin.departments');
+            Route::get('/sub_admin/department/data', 'ReportingController@getsubAdminDepartmentReportData')->name('sub_admin.department.data');
 
         });
 

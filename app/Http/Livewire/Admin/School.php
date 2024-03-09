@@ -25,7 +25,6 @@ class School extends Component
             $this->email = $this->user->email;
             $this->username = $this->user->name;
             $this->gender = $this->user->gender;
-            $this->gender = 'ذكر';
             $this->role = 'sub_admin';
 
         }

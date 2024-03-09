@@ -25,6 +25,7 @@
                                                     <th>#</th>
                                                     <th>الإسم</th>
                                                     <th>رئيس القسم</th>
+                                                    <th>البريد الألكترونى</th>
                                                     <th>عدد المعلمين</th>
                                                     <th>الإعدادات</th>
                                                 </tr>
@@ -35,6 +36,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $department->name }}</td>
                                                         <td>{{ $department->department_owner->name }}</td>
+                                                        <td>{{ $department->department_owner->email }}</td>
                                                         <td>{!! isset($department->teachers) ? count($department->teachers) : 0 !!}</td>
                                                         <td>
                                                             <a href="{{ route('admin.teachers',['id' => $department->id]) }}" title="عرض المعلمين" class="btn btn-xs sharp btn-primary"><i class="fa fa-eye"></i></a>
@@ -44,7 +46,7 @@
                                                 @endforeach
                                                 @if(count($departments) == 0)
                                                     <tr>
-                                                        <td colspan="5">
+                                                        <td colspan="6">
                                                             <h4 class="text-center">لا يوجد أقسام </h4>
                                                         </td>
                                                     </tr>
