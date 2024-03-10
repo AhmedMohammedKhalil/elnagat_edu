@@ -159,16 +159,10 @@
                         <td class="col3" colspan="3"></td>
                     </tr>
                     <tr>
-                        <td class="col6" colspan="6">
-                            <div style="padding-top:20px">
+                        <td class="col12" colspan="12">
+                            <div style="padding-top:20px;text-align:right">
                                 <h4>المدير&nbsp;المساعد</h4>
                                 <p>{{ $school->sub_admin->name }}</p>
-                            </div>
-                        </td>
-                        <td class="col6" colspan="6">
-                            <div style="padding-top:20px">
-                                <h4>مدير&nbsp;المدرسة</h4>
-                                <p>{{ $school->owner }}</p>
                             </div>
                         </td>
                     </tr>

@@ -121,7 +121,7 @@
 
                     <tr>
                         <td class="col12" colspan="12">
-                            <div style="padding-top:20px">
+                            <div style="padding-top:20px;text-align:right">
                                 <h4>المدير&nbsp;المساعد</h4>
                                 <p>{{ $school->sub_admin->name }}</p>
                             </div>
