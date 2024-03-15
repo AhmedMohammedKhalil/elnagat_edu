@@ -254,7 +254,7 @@ class ReportingController extends Controller
                 $teacher_weekly_plan = 0;
                 $teacher_notes = null;
                 $ids[] =$teacher->id;
-                $reviews = $teacher->reviews->where('week_id', $request->week_id);
+                $reviews = Review::where('teacher_id',$teacher->id)->where('week_id', $request->week_id)->get();
                 foreach ($reviews as $review)
                 {
                     $lessons += $review->lessons;

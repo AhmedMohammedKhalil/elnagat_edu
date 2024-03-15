@@ -17,7 +17,7 @@ class Department extends Component
         $this->method = $method;
         $this->school_id = auth()->user()->owner->id;
         $this->gender = 'ذكر';
-        $this->role = 'department_owner';
+        $this->role = 'department-owner';
         //$this->school_id = (isset($school_id) && $school_id != null) ? $school_id : $this->school_id;
         if($this->method == 'edit') {
             $this->department = ModelsDepartment::whereId($department_id)->first();
