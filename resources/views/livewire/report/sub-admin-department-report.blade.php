@@ -12,7 +12,7 @@
                     <label class="department_id">القسم</label>
                     <select class="form-control" wire:model.lazy='department_id' id="department_id">
                         <option value="0">اختر القسم</option>
-                        @if ($departments)    
+                        @if ($departments)
                         @foreach ($departments as $department)
                             <option value="{{ $department->id }}">{{ $department->name }}</option>
                         @endforeach
@@ -28,6 +28,7 @@
                         @foreach ($weeks as $week)
                             <option value="{{ $week->id }}">{{ $week->week_index }}</option>
                         @endforeach
+                        <option value="{!! count($weeks)+1 !!}">الكل</option>
                     </select>
                     @error('week_id') <span class="text-danger error">{{ $message }}</span>@enderror
                 </div>

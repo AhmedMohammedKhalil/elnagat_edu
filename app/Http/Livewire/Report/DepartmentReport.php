@@ -13,7 +13,7 @@ class DepartmentReport extends Component
 
     public function mount()
     {
-        
+
     }
 
     protected $rules = [
@@ -50,6 +50,9 @@ class DepartmentReport extends Component
     {
         $this->schools = School::all();
         $this->weeks = Week::all();
+        if($this->school_id != null){
+            $this->updatedSchoolId();
+        }
         return view('livewire.report.department-report');
     }
 }

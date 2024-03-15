@@ -62,7 +62,32 @@
                             <span><a class="btn_print" ><i class="las la-print" style="font-size:40px;color:#044c71"></i></a></span>
                         </td>
                     </tr>
+                    @if($week)
+                    <tr>
+                        <td class="col2" colspan="2"></td>
+                        <td class="col2" colspan="2">
+                            <div>
+                                <h4>الأسبوع</h4>
+                                <p>{{ $week->week_index }}</p>
 
+                            </div>
+                        </td>
+
+                        <td class="col3" colspan="3">
+                            <div>
+                                <h4>التاريخ&nbsp;(من)</h4>
+                                <p>{!! \Carbon\Carbon::parse($week->start_date)->translatedFormat("l Y-m-d") !!}</p>
+                            </div>
+                        </td>
+                        <td class="col3" colspan="3">
+                            <div>
+                                <h4>التاريخ&nbsp;(إلى)</h4>
+                                <p>{{ \Carbon\Carbon::parse($week->end_date)->translatedFormat("l Y-m-d") }}</p>
+                            </div>
+                        </td>
+                        <td class="col2" colspan="2"></td>
+                    </tr>
+                    @endif
                     <tr>
                         <td class="col4" colspan="4">
                             <h3>عدد الأقسام</h3>
@@ -70,8 +95,18 @@
                         <td class="col4" colspan="2">
                             <h3>{{ $departments_count }}</h3>
                         </td>
-                        <td class="col6" colspan="6">
-                        </td>
+                        @unless ($week)
+                            <td class="col4" colspan="4">
+                                <h3> الأسبوع</h3>
+                            </td>
+                            <td class="col4" colspan="2">
+                                <h3>{{ $week_name }}</h3>
+                            </td>
+                        @else
+                            <td class="col6" colspan="6">
+                            </td>
+                        @endunless
+
                     </tr>
 
                     {{-- start table data header --}}
@@ -99,22 +134,22 @@
                     @foreach ($departments as $department)
                         <tr>
                             <td class="col2" colspan="2">
-                                <h4>{{ $department->name }}</h4>
+                                <h4>{{ $department['name'] }}</h4>
                             </td>
                             <td class="col2" colspan="2">
-                                <h4>{{ count($department->teachers) }}</h4>
+                                <h4>{{ count($department['teachers']) }}</h4>
                             </td>
                             <td class="col2" colspan="2">
-                                <h4>{{ $department->tasks }}</h4>
+                                <h4>{{ $department['tasks_count'] }}</h4>
                             </td>
                             <td class="col2" colspan="2">
-                                <h4>{{ $department->lessons }}</h4>
+                                <h4>{{ $department['lessons_count'] }}</h4>
                             </td>
                             <td class="col2" colspan="2">
-                                <h4>{{ $department->weekly_plan }}</h4>
+                                <h4>{{ $department['weekly_plan_count'] }}</h4>
                             </td>
                             <td class="col2" colspan="2">
-                                <h4>{{ $department->results }}</h4>
+                                <h4>{{ $department['result_count'] }}</h4>
                             </td>
                         </tr>
                     @endforeach

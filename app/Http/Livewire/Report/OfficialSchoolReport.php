@@ -1,17 +1,23 @@
 <?php
 
 namespace App\Http\Livewire\Report;
+use App\Models\Week;
+
+
 use App\Models\School;
-
-
 use Livewire\Component;
 
 class OfficialSchoolReport extends Component
 {
-    public $school_id,$schools;
+    public $school_id,$schools,$weeks,$week_id;
 
+
+    public function mount(){
+        $this->weeks = Week::all();
+    }
     protected $rules = [
         'school_id' => ['required','gt:0'],
+        'week_id' => ['required','gt:0'],
     ];
 
     protected $messages = [
@@ -27,16 +33,17 @@ class OfficialSchoolReport extends Component
         'regex' => 'لا بد ان يكون الحقل ارقام فقط',
         'max' => 'لابد ان يكون الحقل مكون على الاكثر من 255 خانة',
         'school_id.gt' => 'يجب ان تختار المدرسة',
-        
+        'week_id.gt' => 'يجب ان تختار الأسبوع',
+
+
     ];
 
     public function getreport(){
         $this->validate();
-        return redirect()->route('reports.official.school.data',['school_id'=>$this->school_id]);
+        return redirect()->route('reports.school.data',['school_id'=>$this->school_id,'week_id'=>$this->week_id]);
     }
-
     public function render()
-{   
+{
     $this->school_id = auth()->user()->owner->id;
     $this->schools = School::where('id', $this->school_id)->get(); // Fetch and get the result
     return view('livewire.report.official-school-report');

@@ -64,6 +64,7 @@
                             <span><a class="btn_print" ><i class="las la-print" style="font-size:40px;color:#044c71"></i></a></span>
                         </td>
                     </tr>
+                    @if($week)
                     <tr>
                         <td class="col2" colspan="2"></td>
                         <td class="col2" colspan="2">
@@ -86,6 +87,21 @@
                         </td>
                         <td class="col2" colspan="2"></td>
                     </tr>
+                    @else
+                    <tr>
+                        <td class="col4" colspan="4">
+                            <div>
+                                <h4>الأسبوع</h4>
+                            </div>
+                        </td>
+                        <td class="col2" colspan="2">
+                            <div>
+                                <p>{{ $week_name }}</p>
+                            </div>
+                        </td>
+                        <td class="col6" colspan="6"></td>
+                    </tr>
+                    @endif
                     <tr style="border-top: 1px solid black;"></tr>
                     <tr>
                         <td class="col2" colspan="2"></td>
@@ -126,19 +142,19 @@
                     @foreach ($teachers as $teacher)
                         <tr>
                             <td class="col3" colspan="3">
-                                <h4>{{ $teacher->name }}</h4>
+                                <h4>{{ $teacher['name'] }}</h4>
                             </td>
                             <td class="col2" colspan="2">
-                                <h4>{{ $teacher->tasks }}</h4>
+                                <h4>{{ $teacher['tasks_count'] }}</h4>
                             </td>
                             <td class="col2" colspan="2">
-                                <h4>{{ $teacher->lessons }}</h4>
+                                <h4>{{ $teacher['lessons_count'] }}</h4>
                             </td>
                             <td class="col2" colspan="2">
-                                <h4>{{ $teacher->weekly_plan }}</h4>
+                                <h4>{{ $teacher['weekly_plan_count'] }}</h4>
                             </td>
                             <td class="col3" colspan="3">
-                                <h4 style="text-wrap:wrap">{!! $teacher->notes ?? 'لا يوجد ملاحظات' !!}</h4>
+                                <h4 style="text-wrap:wrap">{!! $teacher['notes'] ?? 'لا يوجد ملاحظات' !!}</h4>
                             </td>
                         </tr>
                     @endforeach
