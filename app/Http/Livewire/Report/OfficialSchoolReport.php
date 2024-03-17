@@ -40,7 +40,7 @@ class OfficialSchoolReport extends Component
 
     public function getreport(){
         $this->validate();
-        return redirect()->route('reports.school.data',['school_id'=>$this->school_id,'week_id'=>$this->week_id]);
+        return redirect()->route('reports.official.school.data',['school_id'=>$this->school_id,'week_id'=>$this->week_id]);
     }
     public function render()
 {

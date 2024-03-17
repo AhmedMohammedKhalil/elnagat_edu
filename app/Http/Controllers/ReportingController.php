@@ -153,8 +153,10 @@ class ReportingController extends Controller
     //official----------------------------------------------------------------------------------
     public function officialSchoolReport()
     {
-       $id = auth()->user()->owner->id;
-       return redirect()->route('reports.official.school.data',['school_id'=>$id]);
+       //$id = auth()->user()->owner->id;
+       return view("reports.officialschoolreport");
+
+       //return redirect()->route('reports.official.school.data',['school_id'=>$id]);
     }
 
     public function getOfficialSchoolReportData(Request $request)
@@ -202,8 +204,10 @@ class ReportingController extends Controller
 
     public function subAdminSchoolReport()
     {
-       $id = auth()->user()->school->id;
-       return redirect()->route('reports.sub_admin.school.data',['school_id'=>$id]);
+        return view("reports.subadminschoolreport");
+
+    //    $id = auth()->user()->school->id;
+    //    return redirect()->route('reports.sub_admin.school.data',['school_id'=>$id]);
     }
 
     public function getsubAdminSchoolReportData(Request $request)

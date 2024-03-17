@@ -9,7 +9,7 @@
 
                 <div class="form-group">
                     <label class="school_id">المدرسة</label>
-                    <select class="form-control" wire:model.lazy='school_id' id="school_id">
+                    <select class="form-control" wire:model.lazy='school_id' id="school_id" disabled>
                         <option value="0">اختر المدرسة</option>
                         @foreach ($schools as $school)
                             <option value="{{ $school->id }}">{{ $school->name }}</option>

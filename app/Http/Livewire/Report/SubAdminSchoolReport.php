@@ -40,12 +40,12 @@ class SubAdminSchoolReport extends Component
 
     public function getreport(){
         $this->validate();
-        return redirect()->route('reports.school.data',['school_id'=>$this->school_id,'week_id'=>$this->week_id]);
+        return redirect()->route('reports.sub_admin.school.data',['school_id'=>$this->school_id,'week_id'=>$this->week_id]);
     }
 
     public function render()
 {
-    $this->school_id = auth()->user()->owner->id;
+    $this->school_id = auth()->user()->school->id;
     $this->schools = School::where('id', $this->school_id)->get(); // Fetch and get the result
     return view('livewire.report.sub-admin-school-report');
 }
