@@ -43,7 +43,13 @@
                                                         <td>
                                                             <a href="{{ route('admin.levels',['id' => $teacher->id]) }}" title="المراحل التعليمية" class="btn btn-xs sharp btn-primary"><i class="fa fa-eye"></i></a>
                                                             <a href="{{ route('admin.teachers.edit',['id' => $teacher->id]) }}" title="تعديل" class="btn btn-xs sharp btn-primary"><i class="fa fa-pencil"></i></a>
-
+                                                            <form style="display:inline-block" action="{{route('admin.teachers.destroy',['id'=>$teacher->id])}}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button class="btn btn-xs sharp btn-danger" type="submit" title="حذف" >
+                                                                    <i class='fa fa-trash'></i>
+                                                                </button>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach

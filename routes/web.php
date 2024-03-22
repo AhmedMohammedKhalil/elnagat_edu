@@ -45,6 +45,8 @@ Route::middleware(['auth'])->group(function () {
 
             Route::get('/teachers', 'AdminController@teachers')->name('teachers');
             Route::get('/teachers/edit', 'AdminController@editTeacher')->name('teachers.edit');
+            Route::delete('/teachers/delete', 'AdminController@deleteTeacher')->name('teachers.destroy');
+
 
             Route::get('/levels', 'AdminController@levels')->name('levels');
 

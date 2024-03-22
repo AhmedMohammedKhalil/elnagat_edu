@@ -46,6 +46,24 @@ class AdminController extends Controller
         return view("admin.teacher_edit", compact("teacher_id"));
     }
 
+    public function deleteTeacher(Request $request)
+    {
+        $teacher = Teacher::find($request->id);
+        $deprtment_id = $teacher->department_id;
+        foreach ($teacher->levels as $level) {
+            foreach ($level->classrooms as $classroom) {
+                foreach ($classroom->reviews as $review) {
+                    $review->delete();
+                }
+                $classroom->delete();
+            }
+            $level->delete();
+        }
+        $teacher->delete();
+        return redirect()->route('admin.teachers',['id'=> $deprtment_id]);
+    }
+
+
     public function levels(Request $request) {
         $levels = Level::where('teacher_id',$request->id)->get();
         return view("admin.levels", compact("levels"));

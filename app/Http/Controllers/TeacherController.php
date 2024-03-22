@@ -53,7 +53,17 @@ class TeacherController extends Controller
      */
     public function destroy(Request $request)
     {
-        Teacher::find($request->id)->delete();
+        $teacher = Teacher::find($request->id);
+        foreach ($teacher->levels as $level) {
+            foreach ($level->classrooms as $classroom) {
+                foreach ($classroom->reviews as $review) {
+                    $review->delete();
+                }
+                $classroom->delete();
+            }
+            $level->delete();
+        }
+        $teacher->delete();
         return redirect()->route("teachers.index")->with("success","Teacher Deleted Successful.");
     }
 }
